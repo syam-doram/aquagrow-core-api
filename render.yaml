@@ -21,3 +21,8 @@ services:
         sync: false
       - key: FIREBASE_SERVICE_ACCOUNT_KEY
         sync: false
+      - type: web
+        name: aquagrow-core-api-staging
+        runtime: node
+        plan: free
+        rootDir: server
