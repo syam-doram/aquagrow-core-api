@@ -26,7 +26,9 @@ Both versions use the existing role, ownership, tenant, and device middleware.
    It disables scheduled push and IoT alert jobs while staging.
 3. Supply `MONGODB_URI`, including the database name, `JWT_SECRET`,
    `REFRESH_TOKEN_SECRET`, and `FACTORY_KEY` in Render's environment settings.
-   Set `FIREBASE_SERVICE_ACCOUNT_KEY` for Firebase calls. Carry over the existing
+   Set `FIREBASE_SERVICE_ACCOUNT_KEY` for Firebase calls. Set
+   `FIREBASE_STORAGE_BUCKET` if the bucket differs from
+   `<firebase-project-id>.firebasestorage.app`. Carry over the existing
    optional SMS and Gemini settings for features that use them. Set
    `CORS_ORIGINS` to a comma-separated list for any new portal domains.
 4. Check `GET /api/v1/ready` for HTTP 200, then verify Firebase sign-in, pond

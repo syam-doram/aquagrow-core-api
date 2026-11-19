@@ -2114,7 +2114,8 @@ try {
   if (serviceAccount) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      storageBucket: 'aquagrow-37a3e.firebasestorage.app',
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET?.trim() ||
+        `${serviceAccount.project_id}.firebasestorage.app`,
     });
     adminStorage = admin.storage();
     console.log('[FCM Engine] Initialized Successfully');

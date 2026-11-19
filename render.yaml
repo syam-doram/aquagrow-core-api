@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: aquagrow-core-api
+    name: aquagrow-core-api-staging
     runtime: node
     rootDir: server
     buildCommand: npm ci
