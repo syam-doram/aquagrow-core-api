@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: aquagrow-core-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/v1/ready
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ENABLE_BACKGROUND_JOBS
+        value: "false"
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: REFRESH_TOKEN_SECRET
+        sync: false
+      - key: FACTORY_KEY
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT_KEY
+        sync: false
