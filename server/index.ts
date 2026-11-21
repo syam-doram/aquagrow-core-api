@@ -1,4 +1,4 @@
-import 'dotenv/config';
+﻿import 'dotenv/config';
 import express, { Request } from 'express';
 import bcrypt from 'bcryptjs';
 
@@ -49,9 +49,9 @@ const ALLOWED_ORIGINS = [
   'https://aqua-grow.vercel.app',
   'https://aquagrow-admin.vercel.app',
   'https://aquagrowadmin.vercel.app',
-  'https://aquagrowcompanyportal.vercel.app',   // ✅ Employee portal (Vercel)
-  'https://aquagrow-staff.vercel.app',          // ✅ Staff portal (Vercel)
-  'https://aqua-grow-staff.vercel.app',         // ✅ Staff portal alternate URL
+  'https://aquagrowcompanyportal.vercel.app',   // âœ… Employee portal (Vercel)
+  'https://aquagrow-staff.vercel.app',          // âœ… Staff portal (Vercel)
+  'https://aqua-grow-staff.vercel.app',         // âœ… Staff portal alternate URL
   'https://aquagrow-admin-p6msac1fo-syamkdoram-7863s-projects.vercel.app', // preview
 ];
 
@@ -116,7 +116,7 @@ app.use(['/api/ledger', '/api/shop/ledger', '/api/v1/shop/ledger'], ledgerRoutes
 app.use(['/api/farmers', '/api/v1/shop/farmers'], farmersRoutes);
 app.use(['/api/harvests', '/api/shop/harvests', '/api/v1/shop/harvests'], harvestsRoutes);
 
-// ── NEW AquaGrow Shop ERP Routes ──────────────────────────────────────────────
+// â”€â”€ NEW AquaGrow Shop ERP Routes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 app.use(['/api/suppliers', '/api/shop/suppliers', '/api/v1/shop/suppliers'], suppliersRoutes);
 app.use(['/api/purchase-orders', '/api/shop/purchases', '/api/v1/shop/purchases'], purchaseOrdersRoutes);
 app.use(['/api/shop/farmers', '/api/v1/shop/custom-farmers'], shopFarmersRoutes);
@@ -134,7 +134,7 @@ app.use('/api/shop', shopOrders);
 app.use('/api/iot', iotStatus);
 app.use('/api', common, farmer);
 
-// ─── Health ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Health â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 common.get('/health', (_req, res) =>
   res.json({
     status: 'ok',
@@ -143,20 +143,20 @@ common.get('/health', (_req, res) =>
   })
 );
 
-// ─── App Version Management ───────────────────────────────────────────────────
-// ✅ HOW TO RELEASE A NEW VERSION:
+// â”€â”€â”€ App Version Management â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// âœ… HOW TO RELEASE A NEW VERSION:
 //    1. Bump LATEST_APP_VERSION to the new version string  (e.g., "1.1.0")
 //    2. If this is a SECURITY / CRITICAL hotfix, also bump MIN_APP_VERSION
 //       so older clients are FORCED to update.
 //    3. Add a line to RELEASE_NOTES describing the key changes.
 //    4. Update CURRENT_APP_VERSION in src/hooks/useAppUpdate.ts to match the new APK.
 //    5. Build & deploy the server. The mobile app will auto-detect on next launch.
-// ─────────────────────────────────────────────────────────────────────────────
-const LATEST_APP_VERSION = '1.0.0';    // ← bump when you publish a new APK
-const MIN_APP_VERSION = '1.0.0';    // ← bump only for forced/critical updates
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+const LATEST_APP_VERSION = '1.0.0';    // â† bump when you publish a new APK
+const MIN_APP_VERSION = '1.0.0';    // â† bump only for forced/critical updates
 
 const RELEASE_NOTES: string[] = [
-  'Initial release — full AquaGrow farm management suite',
+  'Initial release â€” full AquaGrow farm management suite',
   'Feed tray monitoring with DOC 20 activation flow',
   'Medicine SOP scheduler with lunar cycle integration',
   'ROI entry with harvest size validation (min 10g ABW)',
@@ -174,15 +174,15 @@ common.get('/app-version', (_req, res) => {
   });
 });
 
-// ═══════════════════════════════╗
-//  SUBSCRIPTION                  ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  SUBSCRIPTION                  â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-// ─── DB health guard (used in push routes that must read user) ────────────────
+// â”€â”€â”€ DB health guard (used in push routes that must read user) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const dbOffline = (res: any) =>
   res.status(503).json({ error: 'Database unavailable. Please try again later.' });
 
-// Plan name → subscriptionStatus mapping
+// Plan name â†’ subscriptionStatus mapping
 const PLAN_STATUS_MAP: Record<string, string> = {
   free: 'free',
   pro: 'pro',
@@ -243,9 +243,9 @@ farmer.get('/user/:userId/subscription', authenticate, requireSelf, async (req, 
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  NOTIFICATIONS                 ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  NOTIFICATIONS                 â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.put('/user/:userId/notifications', authenticate, requireSelf, async (req, res) => {
   try {
@@ -275,9 +275,9 @@ farmer.patch('/user/:userId', authenticate, requireSelf, async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  PONDS                         ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  PONDS                         â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/ponds', authenticate, requireSelf, async (req, res) => {
   try {
@@ -322,7 +322,7 @@ farmer.put('/ponds/:id', authenticate, async (req: AuthenticatedRequest, res) =>
 
     const updated = await PondMongo.findByIdAndUpdate(id, req.body, { new: true });
 
-    // ── If aerators were updated, also write to AeratorLog collection ────────
+    // â”€â”€ If aerators were updated, also write to AeratorLog collection â”€â”€â”€â”€â”€â”€â”€â”€
     if (req.body.aerators) {
       const a = req.body.aerators;
       // Get the newest log entry (the one just added)
@@ -352,10 +352,10 @@ farmer.put('/ponds/:id', authenticate, async (req: AuthenticatedRequest, res) =>
 });
 
 
-// ═══════════════════════════════╗
-// ═══════════════════════════════╗
-//  ROI ENTRIES                   ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  ROI ENTRIES                   â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/roi-entries', authenticate, requireSelf, async (req, res) => {
   try {
@@ -384,9 +384,9 @@ farmer.delete('/roi-entries/:id', authenticate, async (req, res) => {
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  NOTIFICATION HISTORY          ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  NOTIFICATION HISTORY          â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/notifications', authenticate, requireSelf, async (req, res) => {
   try {
@@ -413,9 +413,9 @@ farmer.patch('/notifications/mark-read', authenticate, async (req: Authenticated
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  AERATOR LOGS                  ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  AERATOR LOGS                  â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/aerator-logs', authenticate, requireSelf, async (req, res) => {
   try {
@@ -435,9 +435,9 @@ farmer.delete('/aerator-logs/:id', authenticate, async (req, res) => {
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  WATER LOGS                    ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  WATER LOGS                    â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/water-logs', authenticate, requireSelf, async (req, res) => {
   try {
@@ -453,7 +453,7 @@ farmer.post('/water-logs', authenticate, async (req: AuthenticatedRequest, res) 
   try {
     const data = { ...req.body, userId: req.user.id };
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
-    // Upsert: one record per pond per day — prevents duplicate entries
+    // Upsert: one record per pond per day â€” prevents duplicate entries
     const result = await WaterLogMongo.findOneAndUpdate(
       { userId: req.user.id, pondId: data.pondId, date: data.date },
       { $set: data },
@@ -471,9 +471,9 @@ farmer.delete('/water-logs/:id', authenticate, async (req, res) => {
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });;
 
-// ═══════════════════════════════╗
-//  HARVEST REQUESTS (MARKET)     ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  HARVEST REQUESTS (MARKET)     â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/harvest-requests', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
@@ -531,7 +531,7 @@ farmer.put('/harvest-requests/:id', authenticate, async (req: AuthenticatedReque
     const updated = await HarvestRequest.findByIdAndUpdate(id, updates, { new: true });
     res.json(updated);
     // NOTE: FCM push is sent by the client via POST /api/push/harvest-update
-    // Do NOT send FCM here — that would cause every status change to notify twice.
+    // Do NOT send FCM here â€” that would cause every status change to notify twice.
   } catch (e) { res.status(400).json({ error: e.message }); }
 });
 
@@ -575,9 +575,9 @@ farmer.get('/harvest-requests/:id/messages', authenticate, async (req: Authentic
 });
 
 
-// ═══════════════════════════════╗
-//  SOP LOGS                      ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  SOP LOGS                      â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/sop-logs', authenticate, requireSelf, async (req, res) => {
   try {
@@ -605,9 +605,9 @@ farmer.delete('/sop-logs/:id', authenticate, async (req, res) => {
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  EXPENSES                      ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  EXPENSES                      â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/expenses', authenticate, requireSelf, async (req, res) => {
   try {
@@ -625,9 +625,9 @@ farmer.post('/expenses', authenticate, async (req: AuthenticatedRequest, res) =>
   } catch (e) { res.status(400).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  FEED LOGS                     ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  FEED LOGS                     â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/feed-logs', authenticate, requireSelf, async (req, res) => {
   try {
@@ -655,9 +655,9 @@ farmer.delete('/feed-logs/:id', authenticate, async (req, res) => {
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// ═══════════════════════════════╗
-//  MEDICINE LOGS                 ║
-// ═══════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  MEDICINE LOGS                 â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 farmer.get('/user/:userId/medicine-logs', authenticate, requireSelf, async (req, res) => {
   try {
@@ -685,18 +685,18 @@ farmer.delete('/medicine-logs/:id', authenticate, async (req, res) => {
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// ─── AI Routes (Gemini runs server-side — key never exposed to client) ─────────
+// â”€â”€â”€ AI Routes (Gemini runs server-side â€” key never exposed to client) â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
 const GEMINI_MODEL = 'gemini-2.5-flash';
 
-// ── Shared AI error normaliser ────────────────────────────────────────────────
+// â”€â”€ Shared AI error normaliser â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const normaliseAIError = (e: any): { status: number; body: object } => {
   const msg: string = e?.message || JSON.stringify(e) || '';
-  // 404 — model deprecated / not found
+  // 404 â€” model deprecated / not found
   if (e?.status === 404 || msg.includes('NOT_FOUND') || msg.includes('no longer available') || msg.includes('is not found')) {
-    return { status: 503, body: { error: 'AI model unavailable. The server is being updated — please try again shortly.' } };
+    return { status: 503, body: { error: 'AI model unavailable. The server is being updated â€” please try again shortly.' } };
   }
-  // 429 / RESOURCE_EXHAUSTED — quota exceeded
+  // 429 / RESOURCE_EXHAUSTED â€” quota exceeded
   if (e?.status === 429 || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED') || msg.includes('quota')) {
     // Try to extract retryDelay from error details
     let retryAfter = 60;
@@ -721,7 +721,7 @@ const normaliseAIError = (e: any): { status: number; body: object } => {
   return { status: 500, body: { error: msg || 'AI analysis failed.' } };
 };
 
-// ── Disease Detection ───────────────────────────────────────────────────────────
+// â”€â”€ Disease Detection â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 farmer.post('/ai/analyze-health', authenticate, async (req: any, res: any) => {
   try {
     if (!process.env.GEMINI_API_KEY) return res.status(503).json({ error: 'AI service not configured on server.' });
@@ -734,19 +734,19 @@ farmer.post('/ai/analyze-health', authenticate, async (req: any, res: any) => {
     const prompt = `You are a certified aquaculture pathologist with 20 years of shrimp disease diagnosis experience.
 Analyze this shrimp specimen photo carefully. Return a precise diagnosis using ONLY the visual evidence visible in the image.
 
-1. HEALTHY SHRIMP: Full dark-brown/orange gut line, clear body, normal opacity → disease: "Healthy Shrimp", severity: "Safe"
-2. WHITE SPOT DISEASE (WSSV): White calcified spots on shell, reddish body → severity: "Critical"
-3. EARLY MORTALITY SYNDROME (EMS/AHPND): Pale shrunken hepatopancreas, empty gut → severity: "Critical"
-4. BLACK GILL DISEASE: Dark brown/black gills → severity: "Moderate"
-5. WHITE GUT DISEASE (WGD): White gut line, white fecal strings → severity: "Medium"
-6. RUNNING MORTALITY SYNDROME (RMS): Soft wrinkled carapace, no spots → severity: "High"
-7. EHP: Stunted growth, soft carapace → severity: "High"
-8. VIBRIOSIS: Reddish/black necrotic legs/tail, luminescent → severity: "High"
-9. IHHNV: Bent rostrum, deformed body → severity: "Moderate"
-10. SHELL DISEASE: Black spots on carapace → severity: "Low"
-11. FOULING: Fuzzy coating on body → severity: "Low"
+1. HEALTHY SHRIMP: Full dark-brown/orange gut line, clear body, normal opacity â†’ disease: "Healthy Shrimp", severity: "Safe"
+2. WHITE SPOT DISEASE (WSSV): White calcified spots on shell, reddish body â†’ severity: "Critical"
+3. EARLY MORTALITY SYNDROME (EMS/AHPND): Pale shrunken hepatopancreas, empty gut â†’ severity: "Critical"
+4. BLACK GILL DISEASE: Dark brown/black gills â†’ severity: "Moderate"
+5. WHITE GUT DISEASE (WGD): White gut line, white fecal strings â†’ severity: "Medium"
+6. RUNNING MORTALITY SYNDROME (RMS): Soft wrinkled carapace, no spots â†’ severity: "High"
+7. EHP: Stunted growth, soft carapace â†’ severity: "High"
+8. VIBRIOSIS: Reddish/black necrotic legs/tail, luminescent â†’ severity: "High"
+9. IHHNV: Bent rostrum, deformed body â†’ severity: "Moderate"
+10. SHELL DISEASE: Black spots on carapace â†’ severity: "Low"
+11. FOULING: Fuzzy coating on body â†’ severity: "Low"
 
-RULES: If no shrimp visible → shrimpObserved: false. If blurry → confidence: 0, disease: "Clear Photo Required".
+RULES: If no shrimp visible â†’ shrimpObserved: false. If blurry â†’ confidence: 0, disease: "Clear Photo Required".
 Translate all text values to: ${language}
 
 Return ONLY this JSON (no markdown):
@@ -768,7 +768,7 @@ Return ONLY this JSON (no markdown):
   }
 });
 
-// ── Water Test Scanner ─────────────────────────────────────────────────────────
+// â”€â”€ Water Test Scanner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 farmer.post('/ai/analyze-water', authenticate, async (req: any, res: any) => {
   try {
     if (!process.env.GEMINI_API_KEY) return res.status(503).json({ error: 'AI service not configured on server.' });
@@ -779,12 +779,12 @@ farmer.post('/ai/analyze-water', authenticate, async (req: any, res: any) => {
     const data = base64Image.includes(',') ? base64Image.split(',')[1] : base64Image;
 
     const prompt = `You are an expert aquaculture water quality analyst.
-Analyze this image — it may show pond water color, test kits, strips, or meters.
+Analyze this image â€” it may show pond water color, test kits, strips, or meters.
 
 Water colors: LIGHT_GREEN=healthy, DARK_GREEN=over-bloom, BROWN=diatoms/organic, BLACK=toxic, BLUE_GREEN=cyanobacteria, CLEAR=no plankton, MURKY_YELLOW=turbidity, REDDISH=iron/flagellate.
-Safe ranges (L. vannamei): pH 7.5–8.5, DO >5 mg/L, NH3 <0.1 mg/L, Salinity 10–25 ppt, Temp 23–31°C.
+Safe ranges (L. vannamei): pH 7.5â€“8.5, DO >5 mg/L, NH3 <0.1 mg/L, Salinity 10â€“25 ppt, Temp 23â€“31Â°C.
 
-If not pond water or test equipment → imageValid: false.
+If not pond water or test equipment â†’ imageValid: false.
 Return ONLY valid JSON:
 {"detectedEquipment":"string","confidence":number,"overallStatus":"excellent|good|warning|critical","summary":"string","urgentAction":"string","ph":{"value":0,"raw":"string","status":"string"},"do_":{"value":0,"raw":"string","status":"string"},"ammonia":{"value":0,"raw":"string","status":"string"},"salinity":{"value":0,"raw":"string","status":"string"},"temperature":{"value":0,"raw":"string","status":"string"},"waterColor":{"detected":"string","label":"string","hex":"string","meaning":"string","status":"string"},"problems":[],"diseaseRisks":[],"imageValid":true,"notDetectedReason":"","recommendations":[]}`;
 
@@ -804,7 +804,7 @@ Return ONLY valid JSON:
   }
 });
 
-// ── Live Stream Frame Analysis ─────────────────────────────────────────────────
+// â”€â”€ Live Stream Frame Analysis â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 farmer.post('/ai/analyze-live', authenticate, async (req: any, res: any) => {
   try {
     if (!process.env.GEMINI_API_KEY) return res.status(503).json({ error: 'AI service not configured.' });
@@ -830,7 +830,7 @@ farmer.post('/ai/analyze-live', authenticate, async (req: any, res: any) => {
 });
 
 
-// ─── GET /api/admin/me — current admin's own profile (from adminusers table) ──
+// â”€â”€â”€ GET /api/admin/me â€” current admin's own profile (from adminusers table) â”€â”€
 adminApi.get('/me', authenticate, requireAnyAdmin, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -840,7 +840,7 @@ adminApi.get('/me', authenticate, requireAnyAdmin, async (req: AuthenticatedRequ
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/users — all users (farmers + providers) in User table ─────
+// â”€â”€â”€ GET /api/admin/users â€” all users (farmers + providers) in User table â”€â”€â”€â”€â”€
 adminApi.get('/users', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     const users = await UserMongo.find({}, '-password');
@@ -848,12 +848,12 @@ adminApi.get('/users', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-// ══════════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 //  ADMIN STAFF MANAGEMENT  (adminusers collection)                            
 //  Super Admin only for create/update/delete. Any admin can list.             
-// ══════════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-// GET /api/admin/staff — list all admin staff
+// GET /api/admin/staff â€” list all admin staff
 adminApi.get('/staff', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -862,7 +862,7 @@ adminApi.get('/staff', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// POST /api/admin/staff — create new admin user (super_admin only)
+// POST /api/admin/staff â€” create new admin user (super_admin only)
 adminApi.post('/staff', authenticate, requireSuperAdmin, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -891,7 +891,7 @@ adminApi.post('/staff', authenticate, requireSuperAdmin, async (req: Authenticat
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// PATCH /api/admin/staff/:id — update role / status (super_admin only)
+// PATCH /api/admin/staff/:id â€” update role / status (super_admin only)
 adminApi.patch('/staff/:id', authenticate, requireSuperAdmin, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -909,7 +909,7 @@ adminApi.patch('/staff/:id', authenticate, requireSuperAdmin, async (req: Authen
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// DELETE /api/admin/staff/:id — remove admin account (super_admin only)
+// DELETE /api/admin/staff/:id â€” remove admin account (super_admin only)
 adminApi.delete('/staff/:id', authenticate, requireSuperAdmin, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -921,7 +921,7 @@ adminApi.delete('/staff/:id', authenticate, requireSuperAdmin, async (req: Authe
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// PATCH /api/admin/staff/:id/password — reset another admin's password (super_admin only)
+// PATCH /api/admin/staff/:id/password â€” reset another admin's password (super_admin only)
 adminApi.patch('/staff/:id/password', authenticate, requireSuperAdmin, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -936,12 +936,12 @@ adminApi.patch('/staff/:id/password', authenticate, requireSuperAdmin, async (re
 });
 
 
-// ══════════════════════════════════════════════════════════════════════════════╗
-//  ADMIN INTELLIGENCE ENDPOINTS                                                 ║
-//  All require: Authorization: Bearer <admin_jwt>                               ║
-// ══════════════════════════════════════════════════════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  ADMIN INTELLIGENCE ENDPOINTS                                                 â•‘
+//  All require: Authorization: Bearer <admin_jwt>                               â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-// ─── GET /api/admin/farmers — all farmers with subscription info ──────────────
+// â”€â”€â”€ GET /api/admin/farmers â€” all farmers with subscription info â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/farmers', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -956,7 +956,7 @@ adminApi.get('/farmers', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/ponds — all ponds across all farmers, with computed intel ─
+// â”€â”€â”€ GET /api/admin/ponds â€” all ponds across all farmers, with computed intel â”€
 adminApi.get('/ponds', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1019,7 +1019,7 @@ adminApi.get('/ponds', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/intelligence — aggregated business intelligence dashboard ─
+// â”€â”€â”€ GET /api/admin/intelligence â€” aggregated business intelligence dashboard â”€
 adminApi.get('/intelligence', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1086,7 +1086,7 @@ adminApi.get('/intelligence', authenticate, requireAnyAdmin, async (_req, res) =
 
     // Alerts severity list
     const systemAlerts: { type: string; severity: string; message: string; pondId?: string; farmerId?: string }[] = [];
-    harvestReady.forEach((p: any) => systemAlerts.push({ type: 'HARVEST_READY', severity: 'HIGH', message: `Pond "${p.name}" is DOC ${p.doc} — harvest window open`, pondId: String(p._id), farmerId: p.userId }));
+    harvestReady.forEach((p: any) => systemAlerts.push({ type: 'HARVEST_READY', severity: 'HIGH', message: `Pond "${p.name}" is DOC ${p.doc} â€” harvest window open`, pondId: String(p._id), farmerId: p.userId }));
     criticalRiskPonds.forEach((p: any) => systemAlerts.push({ type: 'WSSV_RISK', severity: 'CRITICAL', message: `Pond "${p.name}" in peak WSSV window (DOC ${p.doc})`, pondId: String(p._id), farmerId: p.userId }));
 
     res.json({
@@ -1120,7 +1120,7 @@ adminApi.get('/intelligence', authenticate, requireAnyAdmin, async (_req, res) =
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/water-alerts — cross-pond water quality alerts ────────────
+// â”€â”€â”€ GET /api/admin/water-alerts â€” cross-pond water quality alerts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/water-alerts', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1139,7 +1139,7 @@ adminApi.get('/water-alerts', authenticate, requireAnyAdmin, async (_req, res) =
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/shop-orders — all shop orders with farmer info ─────────────
+// â”€â”€â”€ GET /api/admin/shop-orders â€” all shop orders with farmer info â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/shop-orders', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1150,9 +1150,9 @@ adminApi.get('/shop-orders', authenticate, requireAnyAdmin, async (_req, res) =>
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/all-orders — UNIFIED view: ShopOrders + ProviderOrders ────
+// â”€â”€â”€ GET /api/admin/all-orders â€” UNIFIED view: ShopOrders + ProviderOrders â”€â”€â”€â”€
 // Both collections now live in the same `aquagrow` DB so this is a simple
-// fan-out query — no cross-DB joins needed.
+// fan-out query â€” no cross-DB joins needed.
 adminApi.get('/all-orders', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1175,7 +1175,7 @@ adminApi.get('/all-orders', authenticate, requireAnyAdmin, async (_req, res) => 
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/providers — all providers from the unified DB ─────────────
+// â”€â”€â”€ GET /api/admin/providers â€” all providers from the unified DB â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/providers', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1193,7 +1193,7 @@ adminApi.get('/providers', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/roi — all ROI/harvest entries for revenue analytics ────────
+// â”€â”€â”€ GET /api/admin/roi â€” all ROI/harvest entries for revenue analytics â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/roi', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1207,7 +1207,7 @@ adminApi.get('/roi', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/subscriptions — all active subscriptions with farmer info ─
+// â”€â”€â”€ GET /api/admin/subscriptions â€” all active subscriptions with farmer info â”€
 adminApi.get('/subscriptions', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1220,7 +1220,7 @@ adminApi.get('/subscriptions', authenticate, requireAnyAdmin, async (_req, res) 
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/expenses — all farmer expenses aggregated ─────────────────
+// â”€â”€â”€ GET /api/admin/expenses â€” all farmer expenses aggregated â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/expenses', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1240,7 +1240,7 @@ adminApi.get('/expenses', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/feed-logs — all feed logs for admin overview ──────────────
+// â”€â”€â”€ GET /api/admin/feed-logs â€” all feed logs for admin overview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/feed-logs', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1260,7 +1260,7 @@ adminApi.get('/feed-logs', authenticate, requireAnyAdmin, async (_req, res) => {
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/medicine-logs — all medicine logs for admin overview ───────
+// â”€â”€â”€ GET /api/admin/medicine-logs â€” all medicine logs for admin overview â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/medicine-logs', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1280,7 +1280,7 @@ adminApi.get('/medicine-logs', authenticate, requireAnyAdmin, async (_req, res) 
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/notifications — all platform notifications ────────────────
+// â”€â”€â”€ GET /api/admin/notifications â€” all platform notifications â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/notifications', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1293,7 +1293,7 @@ adminApi.get('/notifications', authenticate, requireAnyAdmin, async (_req, res) 
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ─── GET /api/admin/iot — all IoT / aerator logs aggregated ──────────────────
+// â”€â”€â”€ GET /api/admin/iot â€” all IoT / aerator logs aggregated â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 adminApi.get('/iot', authenticate, requireAnyAdmin, async (_req, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1314,12 +1314,12 @@ adminApi.get('/iot', authenticate, requireAnyAdmin, async (_req, res) => {
 });
 
 
-// ─── FCM Helper ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ FCM Helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const sendFCM = async (token: string, payload: admin.messaging.Message): Promise<boolean> => {
   if (!token) return false;
   if (admin.apps.length > 0) {
     try {
-      // Always inject the token into the message — callers build the payload
+      // Always inject the token into the message â€” callers build the payload
       // without it since the token is looked up separately.
       const msg: admin.messaging.Message = { ...payload, token };
       await admin.messaging().send(msg);
@@ -1348,11 +1348,11 @@ const sendFCM = async (token: string, payload: admin.messaging.Message): Promise
   return false;
 };
 
-// ════════════════════════════════╗
-//  SHOP ORDERS                   ║
-// ════════════════════════════════╝
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
+//  SHOP ORDERS                   â•‘
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
-// ── Schema ────────────────────────────────────────────────────────────────────
+// â”€â”€ Schema â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ShopOrderSchema = new mongoose.Schema({
   farmerId: { type: String, required: true },
   farmerName: { type: String, default: '' },
@@ -1378,7 +1378,7 @@ const ShopOrderSchema = new mongoose.Schema({
 
 const ShopOrder = (mongoose.models['ShopOrder'] ?? mongoose.model('ShopOrder', ShopOrderSchema)) as mongoose.Model<any>;
 
-// ── Helper: find nearest active provider ──────────────────────────────────────
+// â”€â”€ Helper: find nearest active provider â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Simple version: picks first available provider. Extend with geo-query when needed.
 const assignNearestProvider = async (lat?: number, lng?: number): Promise<{ id: string; name: string } | null> => {
   try {
@@ -1403,7 +1403,7 @@ const assignNearestProvider = async (lat?: number, lng?: number): Promise<{ id: 
   } catch { return null; }
 };
 
-// ── POST /api/shop/orders — farmer places order ────────────────────────────────
+// â”€â”€ POST /api/shop/orders â€” farmer places order â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 shopOrders.post('/orders', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1435,7 +1435,7 @@ shopOrders.post('/orders', authenticate, async (req: AuthenticatedRequest, res) 
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// ── GET /api/shop/orders — list orders (role-scoped) ──────────────────────────
+// â”€â”€ GET /api/shop/orders â€” list orders (role-scoped) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 shopOrders.get('/orders', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1458,7 +1458,7 @@ shopOrders.get('/orders', authenticate, async (req: AuthenticatedRequest, res) =
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ── PATCH /api/shop/orders/:id/claim — provider self-assigns an unassigned order
+// â”€â”€ PATCH /api/shop/orders/:id/claim â€” provider self-assigns an unassigned order
 shopOrders.patch('/orders/:id/claim', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1479,7 +1479,7 @@ shopOrders.patch('/orders/:id/claim', authenticate, async (req: AuthenticatedReq
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ── GET /api/shop/orders/:id — single order ────────────────────────────────────
+// â”€â”€ GET /api/shop/orders/:id â€” single order â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 shopOrders.get('/orders/:id', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1489,7 +1489,7 @@ shopOrders.get('/orders/:id', authenticate, async (req: AuthenticatedRequest, re
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ── PATCH /api/shop/orders/:id/status — provider/admin updates delivery stage ─
+// â”€â”€ PATCH /api/shop/orders/:id/status â€” provider/admin updates delivery stage â”€
 shopOrders.patch('/orders/:id/status', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1499,12 +1499,12 @@ shopOrders.patch('/orders/:id/status', authenticate, async (req: AuthenticatedRe
 
     const order = await ShopOrder.findByIdAndUpdate(req.params.id, { status }, { new: true });
     if (!order) return res.status(404).json({ error: 'Order not found' });
-    console.log(`[ShopOrder] ${order._id} → ${status} by ${req.user.id}`);
+    console.log(`[ShopOrder] ${order._id} â†’ ${status} by ${req.user.id}`);
     res.json(order);
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ── PATCH /api/shop/orders/:id/assign — admin reassigns to different provider ──
+// â”€â”€ PATCH /api/shop/orders/:id/assign â€” admin reassigns to different provider â”€â”€
 shopOrders.patch('/orders/:id/assign', authenticate, requireAnyAdmin, async (req: AuthenticatedRequest, res) => {
   try {
     if (mongoose.connection.readyState !== 1) return dbOffline(res);
@@ -1516,8 +1516,8 @@ shopOrders.patch('/orders/:id/assign', authenticate, requireAnyAdmin, async (req
   } catch (e: any) { res.status(500).json({ error: e.message }); }
 });
 
-// ── Community Image Upload Proxy ──────────────────────────────────────────────
-// Client sends base64 → server uploads to Firebase Storage → returns public URL.
+// â”€â”€ Community Image Upload Proxy â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Client sends base64 â†’ server uploads to Firebase Storage â†’ returns public URL.
 // This BYPASSES the CORS issue entirely since the upload happens server-to-server.
 farmer.post('/community/upload-image', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
@@ -1555,7 +1555,7 @@ farmer.post('/community/upload-image', authenticate, async (req: AuthenticatedRe
   }
 });
 
-// ─── Test Push Endpoint (debug only) ─────────────────────────────────────────
+// â”€â”€â”€ Test Push Endpoint (debug only) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/push/test  { userId: "..." }
 // Sends a real test FCM notification to verify the full pipeline is working.
 farmer.post('/push/test', authenticate, async (req: AuthenticatedRequest, res) => {
@@ -1574,7 +1574,7 @@ farmer.post('/push/test', authenticate, async (req: AuthenticatedRequest, res) =
     const msg: admin.messaging.Message = {
       token: user.fcmToken,
       notification: {
-        title: '✅ AquaGrow Test Notification',
+        title: 'âœ… AquaGrow Test Notification',
         body: `FCM pipeline confirmed working! Token ends in ...${user.fcmToken.slice(-8)}`,
       },
       data: { type: 'test', deepLink: '/dashboard' },
@@ -1592,7 +1592,7 @@ farmer.post('/push/test', authenticate, async (req: AuthenticatedRequest, res) =
     };
 
     const sent = await sendFCM(user.fcmToken, msg);
-    console.log(`[TEST-PUSH] ${sent ? '✅ Sent' : '❌ Failed'} → ${user.name || userId}`);
+    console.log(`[TEST-PUSH] ${sent ? 'âœ… Sent' : 'âŒ Failed'} â†’ ${user.name || userId}`);
     res.json({ ok: sent, userId, tokenTail: user.fcmToken.slice(-8), firebaseApps: admin.apps.length });
   } catch (e: any) {
     res.status(500).json({ ok: false, error: e.message });
@@ -1633,17 +1633,17 @@ const fetchWeatherBrief = async (city: string): Promise<OWMWeatherBrief | null> 
 // Build weather alerts for aquaculture from a weather brief
 const buildWeatherAlerts = (w: OWMWeatherBrief): { title: string; body: string; aqAction: string; type: 'critical' | 'warning' | 'info'; color: string }[] => {
   const out: { title: string; body: string; aqAction: string; type: 'critical' | 'warning' | 'info'; color: string }[] = [];
-  if (w.temp >= 36) out.push({ title: `🌡️ Extreme Heat — ${w.temp}°C`, body: `High temp at ${w.location} causing DO drop risk. Shrimp metabolism slows above 33°C.`, aqAction: 'Skip noon feed (12–2 PM). Apply Vitamin C. Add aeration at 3 PM.', type: 'critical', color: '#EF4444' });
-  else if (w.temp >= 33) out.push({ title: `🌡️ High Temp — ${w.temp}°C`, body: `Temperature above optimal range (26–30°C) at ${w.location}. Increase aeration.`, aqAction: 'Reduce noon feed by 15%. Check DO at 3 PM.', type: 'warning', color: '#F59E0B' });
-  if (w.rainPct > 70) out.push({ title: `🌧️ Heavy Rain Warning`, body: `Heavy rainfall likely at ${w.location}. Salinity drop risk. Check drainage.`, aqAction: 'Reduce feed 20%. Run all aerators. Check salinity after rain.', type: 'critical', color: '#3B82F6' });
-  else if (w.rainPct > 40) out.push({ title: `🌦️ Rain Expected`, body: `Moderate rain at ${w.location}. Monitor pond salinity and DO.`, aqAction: 'Reduce feed 10%. Check DO and pH after rainfall.', type: 'warning', color: '#60A5FA' });
-  if (w.windKmh > 40) out.push({ title: `💨 High Wind — ${w.windKmh} km/h`, body: `Strong winds at ${w.location} can disturb pond surface and stress shrimp.`, aqAction: 'Reduce feeding in windy slots. Increase aerator coverage.', type: 'warning', color: '#8B5CF6' });
-  if (w.hour >= 3 && w.hour <= 6) out.push({ title: `⚠️ Pre-Dawn DO Risk Window`, body: `3–6 AM critical zone at ${w.location}. Photosynthesis stopped.`, aqAction: 'Ensure all aerators running. Check DO immediately.', type: 'warning', color: '#F97316' });
-  if (w.conditionCode === 'storm') out.push({ title: `⛈️ Storm / Lightning Alert`, body: `Thunderstorm conditions at ${w.location}. Avoid pond-side work. Danger to equipment.`, aqAction: 'Secure aerator cables. Keep farmer away from pond edges during lightning.', type: 'critical', color: '#6366F1' });
+  if (w.temp >= 36) out.push({ title: `ðŸŒ¡ï¸ Extreme Heat â€” ${w.temp}Â°C`, body: `High temp at ${w.location} causing DO drop risk. Shrimp metabolism slows above 33Â°C.`, aqAction: 'Skip noon feed (12â€“2 PM). Apply Vitamin C. Add aeration at 3 PM.', type: 'critical', color: '#EF4444' });
+  else if (w.temp >= 33) out.push({ title: `ðŸŒ¡ï¸ High Temp â€” ${w.temp}Â°C`, body: `Temperature above optimal range (26â€“30Â°C) at ${w.location}. Increase aeration.`, aqAction: 'Reduce noon feed by 15%. Check DO at 3 PM.', type: 'warning', color: '#F59E0B' });
+  if (w.rainPct > 70) out.push({ title: `ðŸŒ§ï¸ Heavy Rain Warning`, body: `Heavy rainfall likely at ${w.location}. Salinity drop risk. Check drainage.`, aqAction: 'Reduce feed 20%. Run all aerators. Check salinity after rain.', type: 'critical', color: '#3B82F6' });
+  else if (w.rainPct > 40) out.push({ title: `ðŸŒ¦ï¸ Rain Expected`, body: `Moderate rain at ${w.location}. Monitor pond salinity and DO.`, aqAction: 'Reduce feed 10%. Check DO and pH after rainfall.', type: 'warning', color: '#60A5FA' });
+  if (w.windKmh > 40) out.push({ title: `ðŸ’¨ High Wind â€” ${w.windKmh} km/h`, body: `Strong winds at ${w.location} can disturb pond surface and stress shrimp.`, aqAction: 'Reduce feeding in windy slots. Increase aerator coverage.', type: 'warning', color: '#8B5CF6' });
+  if (w.hour >= 3 && w.hour <= 6) out.push({ title: `âš ï¸ Pre-Dawn DO Risk Window`, body: `3â€“6 AM critical zone at ${w.location}. Photosynthesis stopped.`, aqAction: 'Ensure all aerators running. Check DO immediately.', type: 'warning', color: '#F97316' });
+  if (w.conditionCode === 'storm') out.push({ title: `â›ˆï¸ Storm / Lightning Alert`, body: `Thunderstorm conditions at ${w.location}. Avoid pond-side work. Danger to equipment.`, aqAction: 'Secure aerator cables. Keep farmer away from pond edges during lightning.', type: 'critical', color: '#6366F1' });
   return out;
 };
 
-// ─── WEATHER ALERT PUSH ───────────────────────────────────────────────────────
+// â”€â”€â”€ WEATHER ALERT PUSH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/push/weather-alert
 // Client calls this after fetching OWM data when critical/warning conditions arise.
 // Body: { alertTitle, alertBody, aqAction, alertType, location, conditionCode, temp, rainPct }
@@ -1656,7 +1656,7 @@ farmer.post('/push/weather-alert', authenticate, async (req: AuthenticatedReques
     const user = await UserMongo.findById(userId);
     if (!user?.fcmToken) return res.json({ sent: false, reason: 'No FCM token' });
 
-    const emoji = alertType === 'critical' ? '🚨' : alertType === 'warning' ? '⚠️' : 'ℹ️';
+    const emoji = alertType === 'critical' ? 'ðŸš¨' : alertType === 'warning' ? 'âš ï¸' : 'â„¹ï¸';
     const color = alertType === 'critical' ? '#EF4444' : alertType === 'warning' ? '#F59E0B' : '#10B981';
     const condImg = conditionCode === 'storm'
       ? 'https://aquagrow.onrender.com/assets/push/storm.png'
@@ -1698,8 +1698,8 @@ farmer.post('/push/weather-alert', authenticate, async (req: AuthenticatedReques
           clickAction: 'OPEN_WEATHER_ALERTS',
           sound: 'alert_sound',
           visibility: 'public' as any,
-          // BigText expanded view — shows full aqAction guidance
-          body: `${alertBody}\n\n🌾 Action: ${aqAction}`,
+          // BigText expanded view â€” shows full aqAction guidance
+          body: `${alertBody}\n\nðŸŒ¾ Action: ${aqAction}`,
           imageUrl: condImg,
           defaultVibrateTimings: true,
           defaultLightSettings: true,
@@ -1711,14 +1711,14 @@ farmer.post('/push/weather-alert', authenticate, async (req: AuthenticatedReques
     };
 
     const sent = await sendFCM(user.fcmToken, message);
-    console.log(`[WEATHER-PUSH] ${sent ? 'Sent' : 'Simulated'} | ${alertType} | ${alertTitle} → ${user.name || userId}`);
+    console.log(`[WEATHER-PUSH] ${sent ? 'Sent' : 'Simulated'} | ${alertType} | ${alertTitle} â†’ ${user.name || userId}`);
     res.json({ sent, simulated: !sent });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
   }
 });
 
-// ─── AERATOR CHECK PUSH ───────────────────────────────────────────────────────
+// â”€â”€â”€ AERATOR CHECK PUSH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/push/aerator-check
 // Sends FCM to farmer with Android action buttons (Update Now / Remind Tomorrow)
 farmer.post('/push/aerator-check', authenticate, async (req: AuthenticatedRequest, res) => {
@@ -1737,7 +1737,7 @@ farmer.post('/push/aerator-check', authenticate, async (req: AuthenticatedReques
     const message: admin.messaging.Message = {
       token: user.fcmToken,
       notification: {
-        title: `💨 Aerator Check Required — DOC ${doc}`,
+        title: `ðŸ’¨ Aerator Check Required â€” DOC ${doc}`,
         body: `${pondName} | ${docStage} Stage`,
         imageUrl: 'https://aquagrow.onrender.com/assets/push/aerator_banner.png',
       },
@@ -1761,7 +1761,7 @@ farmer.post('/push/aerator-check', authenticate, async (req: AuthenticatedReques
           clickAction: 'OPEN_AERATOR',
           sound: 'alert_sound',
           visibility: 'public' as any,
-          body: `📍 Pond: ${pondName}\n🌿 Stage: ${docStage} (DOC ${doc})\n📋 ${stageLabel}\n\nPlease update aerator count, HP & positions to meet SOP.`,
+          body: `ðŸ“ Pond: ${pondName}\nðŸŒ¿ Stage: ${docStage} (DOC ${doc})\nðŸ“‹ ${stageLabel}\n\nPlease update aerator count, HP & positions to meet SOP.`,
           imageUrl: 'https://aquagrow.onrender.com/assets/push/aerator_banner.png',
           defaultVibrateTimings: true,
           defaultLightSettings: true,
@@ -1786,7 +1786,7 @@ farmer.post('/push/aerator-check', authenticate, async (req: AuthenticatedReques
   }
 });
 
-// ─── AERATOR QUICK CONFIRM (from notification tap) ────────────────────────────
+// â”€â”€â”€ AERATOR QUICK CONFIRM (from notification tap) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/ponds/:id/aerator-confirm
 // Called when farmer taps "Confirm Current Setup" action button from notification
 farmer.post('/ponds/:id/aerator-confirm', authenticate, async (req: AuthenticatedRequest, res) => {
@@ -1817,7 +1817,7 @@ farmer.post('/ponds/:id/aerator-confirm', authenticate, async (req: Authenticate
 
     const updated = await PondMongo.findByIdAndUpdate(id, { aerators: aeratorUpdate.aerators }, { new: true });
 
-    // ── Also record in AeratorLog for history/analytics ──────────────────────
+    // â”€â”€ Also record in AeratorLog for history/analytics â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const recommended = Math.ceil(((pond as any).size || 0) * 4);
     await new AeratorLogMongo({
       userId: req.user.id,
@@ -1842,7 +1842,7 @@ farmer.post('/ponds/:id/aerator-confirm', authenticate, async (req: Authenticate
 });
 
 
-// ─── AERATOR SNOOZE (remind tomorrow) ────────────────────────────────────────
+// â”€â”€â”€ AERATOR SNOOZE (remind tomorrow) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/ponds/:id/aerator-snooze
 farmer.post('/ponds/:id/aerator-snooze', authenticate, async (req: AuthenticatedRequest, res) => {
   try {
@@ -1855,7 +1855,7 @@ farmer.post('/ponds/:id/aerator-snooze', authenticate, async (req: Authenticated
   } catch (e: any) { res.status(400).json({ error: e.message }); }
 });
 
-// ─── IoT DEVICE ALERT PUSH ────────────────────────────────────────────────────
+// â”€â”€â”€ IoT DEVICE ALERT PUSH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/push/iot-alert
 // Called client-side when polling detects offline/warning device or aerator issue.
 // Sends high-priority FCM push with step-by-step guidance for the farmer.
@@ -1874,39 +1874,39 @@ farmer.post('/push/iot-alert', authenticate, async (req: AuthenticatedRequest, r
       return res.json({ sent: false, reason: 'No FCM token registered' });
     }
 
-    // ── Build alert content based on alert type ──────────────────────────────
+    // â”€â”€ Build alert content based on alert type â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const ALERT_META: Record<string, { emoji: string; title: string; body: (dn: string, pn: string, sig?: number) => string; color: string; channelId: string }> = {
       connection_lost: {
-        emoji: '📡',
-        title: '⚠️ IoT Device Offline',
+        emoji: 'ðŸ“¡',
+        title: 'âš ï¸ IoT Device Offline',
         body: (dn, pn) => `${dn} on ${pn} lost connection. Check power supply and Wi-Fi. Tap to troubleshoot.`,
         color: '#EF4444',
         channelId: 'aquagrow-premium',
       },
       aerator_fault: {
-        emoji: '💨',
-        title: '🚨 Aerator Fault Detected',
+        emoji: 'ðŸ’¨',
+        title: 'ðŸš¨ Aerator Fault Detected',
         body: (dn, pn) => `${dn} on ${pn} appears to have stopped. Check motor, relay board and power. Immediate action needed.`,
         color: '#F97316',
         channelId: 'aquagrow-premium',
       },
       sensor_offline: {
-        emoji: '🔌',
-        title: '📡 Water Sensor Offline',
+        emoji: 'ðŸ”Œ',
+        title: 'ðŸ“¡ Water Sensor Offline',
         body: (dn, pn) => `${dn} on ${pn} disconnected. DO and pH readings are unavailable. Check probe and cable.`,
         color: '#F59E0B',
         channelId: 'aquagrow-premium',
       },
       signal_weak: {
-        emoji: '📶',
-        title: '📶 Weak IoT Signal',
+        emoji: 'ðŸ“¶',
+        title: 'ðŸ“¶ Weak IoT Signal',
         body: (dn, pn, sig) => `${dn} on ${pn} has low signal (${sig ?? '?'}%). Move router closer or check antenna to prevent data loss.`,
         color: '#8B5CF6',
         channelId: 'aquagrow-premium',
       },
       reconnected: {
-        emoji: '✅',
-        title: '✅ Device Reconnected',
+        emoji: 'âœ…',
+        title: 'âœ… Device Reconnected',
         body: (dn, pn) => `${dn} on ${pn} is back online. Live monitoring resumed.`,
         color: '#10B981',
         channelId: 'aquagrow-premium',
@@ -1935,7 +1935,7 @@ farmer.post('/push/iot-alert', authenticate, async (req: AuthenticatedRequest, r
       },
       android: {
         priority: 'high',
-        // TTL 1 hour — IoT alert is time-sensitive; stale delivery is unhelpful
+        // TTL 1 hour â€” IoT alert is time-sensitive; stale delivery is unhelpful
         ttl: 3600000,
         notification: {
           channelId: meta.channelId,
@@ -1947,7 +1947,7 @@ farmer.post('/push/iot-alert', authenticate, async (req: AuthenticatedRequest, r
           clickAction: 'OPEN_SMART_FARM',
           sound: 'alert_sound',
           visibility: 'public' as any,
-          body: `📡 Device: ${deviceName || 'Device'}\n🐟 Pond: ${pondName || 'Pond'}${guidance ? `\n\n🛠️ Fix: ${guidance}` : ''}`,
+          body: `ðŸ“¡ Device: ${deviceName || 'Device'}\nðŸŸ Pond: ${pondName || 'Pond'}${guidance ? `\n\nðŸ› ï¸ Fix: ${guidance}` : ''}`,
           defaultVibrateTimings: true,
           defaultLightSettings: true,
         },
@@ -1966,7 +1966,7 @@ farmer.post('/push/iot-alert', authenticate, async (req: AuthenticatedRequest, r
   }
 });
 
-// ─── IoT DEVICE STATUS QUERY ──────────────────────────────────────────────────
+// â”€â”€â”€ IoT DEVICE STATUS QUERY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // GET /api/iot/status/:userId
 // Returns connection health snapshot for all devices belonging to this user's ponds.
 // In production, this would query a real IoT broker (MQTT / Firebase RTDB).
@@ -2003,7 +2003,7 @@ iotStatus.get('/status/:userId', authenticate, async (req: AuthenticatedRequest,
         pondId: String(pond._id),
         pondName: pond.name,
         type: 'aerator',
-        name: positions[ai] ? `Aerator – ${positions[ai]}` : `Aerator ${ai + 1}`,
+        name: positions[ai] ? `Aerator â€“ ${positions[ai]}` : `Aerator ${ai + 1}`,
         signal: pond.sensorId ? 80 + Math.floor(Math.random() * 15) : 60,
         status: 'online',
         isOn: true,
@@ -2020,19 +2020,19 @@ iotStatus.get('/status/:userId', authenticate, async (req: AuthenticatedRequest,
   }
 });
 
-// ─── HARVEST STAGE PUSH NOTIFICATION ─────────────────────────────────────────
+// â”€â”€â”€ HARVEST STAGE PUSH NOTIFICATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/push/harvest-update
 // Fires an FCM push to the farmer on every harvest status change
 const HARVEST_STAGE_META: Record<string, { emoji: string; title: string; body: (pn: string) => string }> = {
-  pending: { emoji: '📋', title: 'Harvest Request Submitted', body: (p) => `${p}: Your request is live. Waiting for a buyer to accept.` },
-  accepted: { emoji: '🤝', title: 'Buyer Accepted Your Order!', body: (p) => `${p}: A buyer accepted your harvest. Prepare for quality inspection.` },
-  quality_checked: { emoji: '🔬', title: 'Quality Check Completed ✓', body: (p) => `${p}: Quality passed! Buyer is proceeding to weigh your harvest.` },
-  weighed: { emoji: '⚖️', title: 'Weighing Done — Rate Check Next', body: (p) => `${p}: Harvest weighed. Buyer is confirming the final rate per kg.` },
-  rate_confirmed: { emoji: '💰', title: 'Rate Confirmed — Harvest Starting!', body: (p) => `${p}: Final rate confirmed. Physical harvest is now beginning!` },
-  harvested: { emoji: '🎣', title: 'Harvest Complete! Payment Soon', body: (p) => `${p}: Harvest is done! Payment is being processed now.` },
-  paid: { emoji: '💸', title: '💸 Payment Released!', body: (p) => `${p}: Your payment has been released. Check your wallet!` },
-  completed: { emoji: '🏆', title: 'Harvest Cycle Completed', body: (p) => `${p}: Cycle archived. Excellent work this season!` },
-  cancelled: { emoji: '❌', title: 'Harvest Order Cancelled', body: (p) => `${p}: Your harvest order was cancelled. You may submit a new request.` },
+  pending: { emoji: 'ðŸ“‹', title: 'Harvest Request Submitted', body: (p) => `${p}: Your request is live. Waiting for a buyer to accept.` },
+  accepted: { emoji: 'ðŸ¤', title: 'Buyer Accepted Your Order!', body: (p) => `${p}: A buyer accepted your harvest. Prepare for quality inspection.` },
+  quality_checked: { emoji: 'ðŸ”¬', title: 'Quality Check Completed âœ“', body: (p) => `${p}: Quality passed! Buyer is proceeding to weigh your harvest.` },
+  weighed: { emoji: 'âš–ï¸', title: 'Weighing Done â€” Rate Check Next', body: (p) => `${p}: Harvest weighed. Buyer is confirming the final rate per kg.` },
+  rate_confirmed: { emoji: 'ðŸ’°', title: 'Rate Confirmed â€” Harvest Starting!', body: (p) => `${p}: Final rate confirmed. Physical harvest is now beginning!` },
+  harvested: { emoji: 'ðŸŽ£', title: 'Harvest Complete! Payment Soon', body: (p) => `${p}: Harvest is done! Payment is being processed now.` },
+  paid: { emoji: 'ðŸ’¸', title: 'ðŸ’¸ Payment Released!', body: (p) => `${p}: Your payment has been released. Check your wallet!` },
+  completed: { emoji: 'ðŸ†', title: 'Harvest Cycle Completed', body: (p) => `${p}: Cycle archived. Excellent work this season!` },
+  cancelled: { emoji: 'âŒ', title: 'Harvest Order Cancelled', body: (p) => `${p}: Your harvest order was cancelled. You may submit a new request.` },
 };
 
 farmer.post('/push/harvest-update', authenticate, async (req: AuthenticatedRequest, res) => {
@@ -2088,7 +2088,7 @@ farmer.post('/push/harvest-update', authenticate, async (req: AuthenticatedReque
       },
       android: {
         priority: 'high',
-        ttl: 86400000,  // 24h — harvest is time-sensitive
+        ttl: 86400000,  // 24h â€” harvest is time-sensitive
         notification: {
           channelId: 'aquagrow-harvest',
           color: stageColor,
@@ -2099,7 +2099,7 @@ farmer.post('/push/harvest-update', authenticate, async (req: AuthenticatedReque
           clickAction: 'OPEN_HARVEST_TRACKING',
           sound: status === 'paid' || status === 'harvested' ? 'success_chime' : 'alert_sound',
           visibility: 'public' as any,
-          body: `${msgBody}\n\n🐟 Pond: ${pondName || 'Your Pond'}\nTap to track your harvest live →`,
+          body: `${msgBody}\n\nðŸŸ Pond: ${pondName || 'Your Pond'}\nTap to track your harvest live â†’`,
           imageUrl: stageImg,
           defaultVibrateTimings: true,
           defaultLightSettings: true,
@@ -2111,7 +2111,7 @@ farmer.post('/push/harvest-update', authenticate, async (req: AuthenticatedReque
     };
 
     const sent = await sendFCM(user.fcmToken, msgPayload);
-    console.log(`[HARVEST-PUSH] ${sent ? 'Sent' : 'Simulated'} → ${user.name || userId} | ${pondName} | ${status}`);
+    console.log(`[HARVEST-PUSH] ${sent ? 'Sent' : 'Simulated'} â†’ ${user.name || userId} | ${pondName} | ${status}`);
     res.json({ sent, simulated: !sent });
   } catch (e: any) {
     res.status(500).json({ error: e.message });
@@ -2123,7 +2123,7 @@ import admin from 'firebase-admin';
 
 let adminStorage: ReturnType<typeof admin.storage> | null = null;
 
-// ─── Firebase Admin Setup (for Push Notifications + Storage uploads) ─────────
+// â”€â”€â”€ Firebase Admin Setup (for Push Notifications + Storage uploads) â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Note: In Production, set FIREBASE_SERVICE_ACCOUNT_KEY in .env
 try {
   const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_KEY
@@ -2146,7 +2146,7 @@ try {
   console.warn('[FCM Engine] Initialization skipped (service account invalid or missing)');
 }
 
-// ─── Push daemon (Auto-Alert Engine) ──────────────────────────────────────────
+// â”€â”€â”€ Push daemon (Auto-Alert Engine) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const runPushEngine = async () => {
   try {
     const now = new Date();
@@ -2175,7 +2175,7 @@ const runPushEngine = async () => {
         let alertTitle = '';
         let alertBody = '';
 
-        // ─── AERATOR STAGE CHECK (Every 20 DOC) ─────────────────────────────
+        // â”€â”€â”€ AERATOR STAGE CHECK (Every 20 DOC) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const stage = Math.ceil(doc / 20);
         const stageStartDoc = (stage - 1) * 20 + 1;
         const isAeratorDue = doc >= stageStartDoc && doc <= stageStartDoc + 2;
@@ -2190,7 +2190,7 @@ const runPushEngine = async () => {
           const aeratorMsg: admin.messaging.Message = {
             token: u.fcmToken!,
             notification: {
-              title: `💨 Aerator Check Due — DOC ${doc}`,
+              title: `ðŸ’¨ Aerator Check Due â€” DOC ${doc}`,
               body: `${p.name}: ${stageLabel}. Update aerator count & positions for SOP compliance.`,
             },
             data: {
@@ -2202,7 +2202,7 @@ const runPushEngine = async () => {
             },
             android: {
               priority: 'high',
-              // TTL 7 hours — aerator check is time-critical, do not deliver stale
+              // TTL 7 hours â€” aerator check is time-critical, do not deliver stale
               ttl: 7200000,
               notification: {
                 channelId: 'aquagrow-aerator',
@@ -2214,7 +2214,7 @@ const runPushEngine = async () => {
                 clickAction: 'OPEN_AERATOR',
                 sound: 'alert_sound',
                 visibility: 'public' as any,
-                body: `📍 Pond: ${p.name}\n🌿 Stage: ${stageLabel} (DOC ${doc})\n\nPlease update aerator count & positions to meet SOP.`,
+                body: `ðŸ“ Pond: ${p.name}\nðŸŒ¿ Stage: ${stageLabel} (DOC ${doc})\n\nPlease update aerator count & positions to meet SOP.`,
                 defaultVibrateTimings: true,
                 defaultLightSettings: true,
               },
@@ -2228,75 +2228,75 @@ const runPushEngine = async () => {
           console.log(`[AERATOR-PUSH] Sent stage check to ${u.name || ''} for ${p.name} DOC ${doc}`);
         }
 
-        // ─── CONDITION 1: Rich DOC Milestones ──────────────────────────────────
+        // â”€â”€â”€ CONDITION 1: Rich DOC Milestones â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const DOC_MILESTONES: Record<number, { title: string; body: string; bigBody: string; img: string; color: string }> = {
           15: {
-            title: '🦐 Day 15 Growth Check — Action Required!',
+            title: 'ðŸ¦ Day 15 Growth Check â€” Action Required!',
             body: `${p.name}: Vitamin C spike time! Check trays & apply immunity booster.`,
-            bigBody: `📍 Pond: ${p.name}\n\n✅ Action: Apply Vitamin C (1g/kg feed)\n🌡️ Check feed tray consumption\n💉 Start Immunity Pulse booster today\n\n💪 Your shrimp are in the crucial early window!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nâœ… Action: Apply Vitamin C (1g/kg feed)\nðŸŒ¡ï¸ Check feed tray consumption\nðŸ’‰ Start Immunity Pulse booster today\n\nðŸ’ª Your shrimp are in the crucial early window!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc15.png',
             color: '#22C55E',
           },
           25: {
-            title: '⚠️ DOC 25 — Prepare for Critical Stage!',
+            title: 'âš ï¸ DOC 25 â€” Prepare for Critical Stage!',
             body: `${p.name}: Apply Immunity Pulse now before DOC 30 risk window opens.`,
-            bigBody: `📍 Pond: ${p.name}\n\n⚡ DOC 30 is 5 days away — act now:\n✅ Apply Immunity Pulse in feed\n🔬 Check for tail redness or white spots\n💊 Start probiotic dosing cycle\n\n🎯 Preparation now = higher survival!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nâš¡ DOC 30 is 5 days away â€” act now:\nâœ… Apply Immunity Pulse in feed\nðŸ”¬ Check for tail redness or white spots\nðŸ’Š Start probiotic dosing cycle\n\nðŸŽ¯ Preparation now = higher survival!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc25.png',
             color: '#F59E0B',
           },
           30: {
-            title: '📈 DOC 30 — Risk Window Starts Now!',
+            title: 'ðŸ“ˆ DOC 30 â€” Risk Window Starts Now!',
             body: `${p.name}: High-risk period. Watch for tail redness. Probiotics essential.`,
-            bigBody: `📍 Pond: ${p.name}\n\n🚨 Critical transition stage (DOC 30–45):\n🔴 Watch for tail redness / abnormal behavior\n💧 Increase water probiotic frequency\n💨 Run aerators 100% during 3–6 AM\n⚖️ Cross-check FCR and feed consumption\n\n⚠️ Do NOT miss tray checks this week!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸš¨ Critical transition stage (DOC 30â€“45):\nðŸ”´ Watch for tail redness / abnormal behavior\nðŸ’§ Increase water probiotic frequency\nðŸ’¨ Run aerators 100% during 3â€“6 AM\nâš–ï¸ Cross-check FCR and feed consumption\n\nâš ï¸ Do NOT miss tray checks this week!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc30.png',
             color: '#EF4444',
           },
           40: {
-            title: '🔴 DOC 40 — Critical Stage Alert!',
-            body: `${p.name}: DOC 40 Vit-Min Booster due. Max aeration 9PM–5AM.`,
-            bigBody: `📍 Pond: ${p.name}\n\n💊 Apply Vit-Min Booster in feed (2g/kg)\n💨 Run ALL aerators from 9 PM to 5 AM\n🔍 Check trays every hour during peak\n🧪 Log water quality — pH, DO, Ammonia\n\n🏅 DOC 40 is the make-or-break week. Stay sharp!`,
+            title: 'ðŸ”´ DOC 40 â€” Critical Stage Alert!',
+            body: `${p.name}: DOC 40 Vit-Min Booster due. Max aeration 9PMâ€“5AM.`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸ’Š Apply Vit-Min Booster in feed (2g/kg)\nðŸ’¨ Run ALL aerators from 9 PM to 5 AM\nðŸ” Check trays every hour during peak\nðŸ§ª Log water quality â€” pH, DO, Ammonia\n\nðŸ… DOC 40 is the make-or-break week. Stay sharp!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc40.png',
             color: '#EF4444',
           },
           45: {
-            title: '🚨 DOC 45 — Peak WSSV Risk Window!',
+            title: 'ðŸš¨ DOC 45 â€” Peak WSSV Risk Window!',
             body: `${p.name}: Maximum virus risk. Max aeration. Reduce feed on cloudy days.`,
-            bigBody: `📍 Pond: ${p.name}\n\n🦠 WSSV Risk at MAXIMUM — Act Now:\n💨 Max aeration 24/7 for next 5 days\n⏬ Reduce feed by 10% on cloudy/rainy days\n🔬 Check for white spots on carapace\n📞 Any mortality spike? Call expert immediately!\n\n🛡️ Your vigilance is the vaccine. Don't relax!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸ¦  WSSV Risk at MAXIMUM â€” Act Now:\nðŸ’¨ Max aeration 24/7 for next 5 days\nâ¬ Reduce feed by 10% on cloudy/rainy days\nðŸ”¬ Check for white spots on carapace\nðŸ“ž Any mortality spike? Call expert immediately!\n\nðŸ›¡ï¸ Your vigilance is the vaccine. Don't relax!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc45.png',
             color: '#EF4444',
           },
           50: {
-            title: '💊 DOC 50 — Liver Tonic Time',
+            title: 'ðŸ’Š DOC 50 â€” Liver Tonic Time',
             body: `${p.name}: Hepatopancreas protection due. Apply Liver Tonic in feed today.`,
-            bigBody: `📍 Pond: ${p.name}\n\n💊 Today's Protocol:\n🟡 Apply Liver Tonic (2ml/kg feed)\n⚖️ Check ABW — shrimp should be 5–7g\n💧 Partial water exchange if DO drops\n📋 Record medicine log in AquaGrow\n\n🌱 DOC 50: Hepatopancreas strength = harvest yield!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸ’Š Today's Protocol:\nðŸŸ¡ Apply Liver Tonic (2ml/kg feed)\nâš–ï¸ Check ABW â€” shrimp should be 5â€“7g\nðŸ’§ Partial water exchange if DO drops\nðŸ“‹ Record medicine log in AquaGrow\n\nðŸŒ± DOC 50: Hepatopancreas strength = harvest yield!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc50.png',
             color: '#8B5CF6',
           },
           60: {
-            title: '🔵 DOC 60 — Growth Spurt Phase',
+            title: 'ðŸ”µ DOC 60 â€” Growth Spurt Phase',
             body: `${p.name}: 1g growth spike expected! Double Water Probiotic application.`,
-            bigBody: `📍 Pond: ${p.name}\n\n🚀 Growth Acceleration Week:\n💧 Apply Water Probiotic Max every 2 days\n🍤 Increase feed ration by 10% if trays are clean\n📏 ABW target: 8–10g by DOC 65\n💨 Night aeration critical — DO must stay above 5\n\n🏆 You're 30 days from a record harvest!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸš€ Growth Acceleration Week:\nðŸ’§ Apply Water Probiotic Max every 2 days\nðŸ¤ Increase feed ration by 10% if trays are clean\nðŸ“ ABW target: 8â€“10g by DOC 65\nðŸ’¨ Night aeration critical â€” DO must stay above 5\n\nðŸ† You're 30 days from a record harvest!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc60.png',
             color: '#3B82F6',
           },
           70: {
-            title: '🟣 DOC 70 — Final Immunity Boost',
+            title: 'ðŸŸ£ DOC 70 â€” Final Immunity Boost',
             body: `${p.name}: Last immunity protocol before harvest prep. Follow SOP.`,
-            bigBody: `📍 Pond: ${p.name}\n\n🎯 Final Immunity Protocol:\n💉 Apply final Vit-C + Mineral mix (3g/kg feed)\n⚖️ ABW check — should be 12–15g for Vannamei\n📋 Plan withdrawal schedule (no heavy meds after DOC 80)\n🏪 Check market rates in AquaGrow → Market\n\n🌟 Finish strong. You're almost there!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸŽ¯ Final Immunity Protocol:\nðŸ’‰ Apply final Vit-C + Mineral mix (3g/kg feed)\nâš–ï¸ ABW check â€” should be 12â€“15g for Vannamei\nðŸ“‹ Plan withdrawal schedule (no heavy meds after DOC 80)\nðŸª Check market rates in AquaGrow â†’ Market\n\nðŸŒŸ Finish strong. You're almost there!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc70.png',
             color: '#8B5CF6',
           },
           83: {
-            title: '⏰ DOC 83 — Harvest Prep Has Begun!',
+            title: 'â° DOC 83 â€” Harvest Prep Has Begun!',
             body: `${p.name}: STOP heavy medicines. Withdrawal period active.`,
-            bigBody: `📍 Pond: ${p.name}\n\n🚫 STOP all heavy medicines now!\n✅ Only Vitamin C + probiotics allowed\n💧 Fresh water exchange: 20–30% today\n⚖️ ABW target: 15–18g before harvest\n📲 Open AquaGrow → Harvest to submit your order\n\n🎣 1 week to go. Prepare your team and buyer!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸš« STOP all heavy medicines now!\nâœ… Only Vitamin C + probiotics allowed\nðŸ’§ Fresh water exchange: 20â€“30% today\nâš–ï¸ ABW target: 15â€“18g before harvest\nðŸ“² Open AquaGrow â†’ Harvest to submit your order\n\nðŸŽ£ 1 week to go. Prepare your team and buyer!`,
             img: 'https://aquagrow.onrender.com/assets/push/doc83.png',
             color: '#EC4899',
           },
           90: {
-            title: '🎉 DOC 90 — HARVEST READY! Submit Now!',
+            title: 'ðŸŽ‰ DOC 90 â€” HARVEST READY! Submit Now!',
             body: `${p.name}: Zero medicines. Shell quality check done. Submit harvest order!`,
-            bigBody: `📍 Pond: ${p.name}\n\n🏆 YOUR SHRIMP ARE HARVEST-READY!\n\n✅ Zero heavy medicines for 7+ days\n🔬 Shell quality: firm & dark\n⚖️ Estimated yield: check ABW × survival%\n📲 AquaGrow → Harvest → New Request\n💰 Check live market rates before pricing\n\n🎊 Congratulations! Another successful cycle!`,
+            bigBody: `ðŸ“ Pond: ${p.name}\n\nðŸ† YOUR SHRIMP ARE HARVEST-READY!\n\nâœ… Zero heavy medicines for 7+ days\nðŸ”¬ Shell quality: firm & dark\nâš–ï¸ Estimated yield: check ABW Ã— survival%\nðŸ“² AquaGrow â†’ Harvest â†’ New Request\nðŸ’° Check live market rates before pricing\n\nðŸŽŠ Congratulations! Another successful cycle!`,
             img: 'https://aquagrow.onrender.com/assets/push/harvest_done.png',
             color: '#22C55E',
           },
@@ -2307,25 +2307,25 @@ const runPushEngine = async () => {
           alertBody = DOC_MILESTONES[doc].body;
         }
 
-        // ─── CONDITION 2: Amavasya / Purnima Lunar Alert ───────────────────────
+        // â”€â”€â”€ CONDITION 2: Amavasya / Purnima Lunar Alert â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         else if (isAmavasya && u.notifications.water) {
-          alertTitle = `🌑 Amavasya High Molt Risk Tonight!`;
+          alertTitle = `ðŸŒ‘ Amavasya High Molt Risk Tonight!`;
           alertBody = `${p.name}: Mass molting + DO drop risk. Run 100% aerators. Reduce feed by 25%. Stay alert!`;
         }
 
-        // ─── CONDITION 3: 6 AM Morning Feed Reminder ───────────────────────────
+        // â”€â”€â”€ CONDITION 3: 6 AM Morning Feed Reminder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         else if (currentHour === 6 && u.notifications.feed) {
-          alertTitle = `🦐 Time to Feed Your Shrimp – Don't Miss It!`;
+          alertTitle = `ðŸ¦ Time to Feed Your Shrimp â€“ Don't Miss It!`;
           alertBody = `Good morning! First feed time for ${p.name} (DOC ${doc}). Apply 4-5 balanced meals today. Check trays.`;
         }
 
-        // ─── CONDITION 4: 9 PM DO / Aeration Alert ─────────────────────────────
+        // â”€â”€â”€ CONDITION 4: 9 PM DO / Aeration Alert â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         else if (currentHour === 21 && u.notifications.water && !isAmavasya) {
-          alertTitle = `💨 9 PM Aeration Check — ${p.name}`;
-          alertBody = `Night aeration window (9PM–5AM). Maintain DO above 4.5 mg/L. DOC ${doc} — check all aerators now.`;
+          alertTitle = `ðŸ’¨ 9 PM Aeration Check â€” ${p.name}`;
+          alertBody = `Night aeration window (9PMâ€“5AM). Maintain DO above 4.5 mg/L. DOC ${doc} â€” check all aerators now.`;
         }
 
-        // ─── CONDITION 5: Daily Active Pond Reminder (fallback — always fires) ──
+        // â”€â”€â”€ CONDITION 5: Daily Active Pond Reminder (fallback â€” always fires) â”€â”€
         // Ensures at least one daily notification per active pond even when
         // no milestone / lunar / time-specific condition matches.
         else if (!alertTitle && doc > 0) {
@@ -2334,7 +2334,7 @@ const runPushEngine = async () => {
               doc <= 40 ? 'Early Growth Stage' :
                 doc <= 60 ? 'Mid Growth Stage' :
                   doc <= 80 ? 'Pre-Harvest Stage' : 'Harvest Ready Stage';
-          alertTitle = `🌊 Daily Update — ${p.name} | DOC ${doc}`;
+          alertTitle = `ðŸŒŠ Daily Update â€” ${p.name} | DOC ${doc}`;
           alertBody = `${stageLabel}: Check trays, log water quality & verify aerators. Tap to open pond.`;
         }
 
@@ -2408,18 +2408,18 @@ const runPushEngine = async () => {
 
           const engineSent = await sendFCM(u.fcmToken!, fullMessage);
           if (engineSent) {
-            console.log(`[FCM-SUCCESS] ✅ Sent to ${u.name || String(u._id)} | ${p.name} | DOC ${doc} | ${alertTitle}`);
+            console.log(`[FCM-SUCCESS] âœ… Sent to ${u.name || String(u._id)} | ${p.name} | DOC ${doc} | ${alertTitle}`);
           } else {
-            console.warn(`[FCM-FAIL] ❌ sendFCM returned false for ${u.name || String(u._id)} — token may be stale or Firebase not initialized. Token: ${u.fcmToken!.slice(0, 20)}...`);
+            console.warn(`[FCM-FAIL] âŒ sendFCM returned false for ${u.name || String(u._id)} â€” token may be stale or Firebase not initialized. Token: ${u.fcmToken!.slice(0, 20)}...`);
           }
         }
       }
     }
 
-    // ─── WEATHER CHECK: per-user, once per daemon cycle ──────────────────────
+    // â”€â”€â”€ WEATHER CHECK: per-user, once per daemon cycle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     // Fetch real OWM weather for each user's location. Send FCM for critical /
     // warning conditions. Suppress if the same alert was already sent in last 3h.
-    const weatherSuppressMap = new Map<string, number>(); // userId → last alert timestamp
+    const weatherSuppressMap = new Map<string, number>(); // userId â†’ last alert timestamp
 
     for (const u of users) {
       if (!u.fcmToken || !u.notifications) continue;
@@ -2436,7 +2436,7 @@ const runPushEngine = async () => {
       const topAlert = wxAlerts.find(a => a.type === 'critical') ?? wxAlerts.find(a => a.type === 'warning');
       if (!topAlert) continue;
 
-      const wxEmoji = topAlert.type === 'critical' ? '🚨' : '⚠️';
+      const wxEmoji = topAlert.type === 'critical' ? 'ðŸš¨' : 'âš ï¸';
       const wxCondImg = weatherBrief.conditionCode === 'storm'
         ? 'https://aquagrow.onrender.com/assets/push/storm.png'
         : weatherBrief.conditionCode === 'rain'
@@ -2463,7 +2463,7 @@ const runPushEngine = async () => {
           deepLink: '/weather',
         },
         android: {
-          // ALWAYS high — 'normal' priority messages are NOT delivered to killed apps
+          // ALWAYS high â€” 'normal' priority messages are NOT delivered to killed apps
           priority: 'high',
           ttl: 3600000,
           notification: {
@@ -2476,8 +2476,8 @@ const runPushEngine = async () => {
             sound: 'alert_sound',
             visibility: 'public' as any,
             clickAction: 'OPEN_WEATHER_ALERTS',
-            // BigText expanded — shows full aquaculture action
-            body: `${topAlert.body}\n\n🌾 AQ Action: ${topAlert.aqAction}\n📍 ${weatherBrief.location} | 🌡️ ${weatherBrief.temp}°C | 🌧️ ${weatherBrief.rainPct}%`,
+            // BigText expanded â€” shows full aquaculture action
+            body: `${topAlert.body}\n\nðŸŒ¾ AQ Action: ${topAlert.aqAction}\nðŸ“ ${weatherBrief.location} | ðŸŒ¡ï¸ ${weatherBrief.temp}Â°C | ðŸŒ§ï¸ ${weatherBrief.rainPct}%`,
             imageUrl: wxCondImg,
             defaultVibrateTimings: true,
             defaultLightSettings: true,
@@ -2500,14 +2500,14 @@ const runPushEngine = async () => {
       };
 
       const wxSent = await sendFCM(u.fcmToken!, wxMsg);
-      console.log(`[WEATHER-DAEMON] ${wxSent ? 'Sent' : 'Simulated'} | ${topAlert.type} | ${topAlert.title} → ${u.name || String(u._id)} | ${city}`);
+      console.log(`[WEATHER-DAEMON] ${wxSent ? 'Sent' : 'Simulated'} | ${topAlert.type} | ${topAlert.title} â†’ ${u.name || String(u._id)} | ${city}`);
       if (wxSent) weatherSuppressMap.set(String(u._id), Date.now());
     }
 
   } catch (e) { console.error('[Push Engine Error]', e); }
 };
 
-// ─── Start ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Start â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 if (process.env.NODE_ENV !== 'test') {
   if (!process.env.MONGODB_URI?.trim()) {
     throw new Error('MONGODB_URI is required');
@@ -2522,9 +2522,9 @@ if (process.env.NODE_ENV !== 'test') {
     console.log(`[Aqua Server] Port ${PORT} claimed.`);
 
     connectDB().then(async () => {
-      console.log(`[Aqua Server] ✅ UNIFIED MongoDB (aquagrow) connected — farmers, providers, orders all in ONE DB. AI: ${process.env.GEMINI_API_KEY ? 'READY' : 'MISSING API KEY'}`);
+      console.log(`[Aqua Server] âœ… UNIFIED MongoDB (aquagrow) connected â€” farmers, providers, orders all in ONE DB. AI: ${process.env.GEMINI_API_KEY ? 'READY' : 'MISSING API KEY'}`);
 
-      // connectProviderDB is now a no-op — all provider models use the shared aquagrow DB.
+      // connectProviderDB is now a no-op â€” all provider models use the shared aquagrow DB.
       // Calling it here just fires the info log and returns immediately.
       connectProviderDB().catch(() => { });
 
@@ -2535,7 +2535,7 @@ if (process.env.NODE_ENV !== 'test') {
         setInterval(runPushEngine, 15 * 60 * 1000);
       }
 
-      // ── Keep-alive ping: prevents Render free tier from sleeping ──────────
+      // â”€â”€ Keep-alive ping: prevents Render free tier from sleeping â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       // Pings own /api/health every 14 minutes so the server never cold-starts
       setInterval(async () => {
         try {
@@ -2546,7 +2546,7 @@ if (process.env.NODE_ENV !== 'test') {
         }
       }, 14 * 60 * 1000);
     }).catch(err => {
-      // connectDB already calls process.exit(1) on failure — this catch won't be reached
+      // connectDB already calls process.exit(1) on failure â€” this catch won't be reached
       console.error('[Aqua Server] Startup DB error:', err.message);
     });
   });
