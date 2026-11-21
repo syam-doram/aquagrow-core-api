@@ -1,4 +1,4 @@
-﻿import 'dotenv/config';
+import 'dotenv/config';
 import express, { Request } from 'express';
 import bcrypt from 'bcryptjs';
 
@@ -120,14 +120,14 @@ app.use(['/api/harvests', '/api/shop/harvests', '/api/v1/shop/harvests'], harves
 app.use(['/api/suppliers', '/api/shop/suppliers', '/api/v1/shop/suppliers'], suppliersRoutes);
 app.use(['/api/purchase-orders', '/api/shop/purchases', '/api/v1/shop/purchases'], purchaseOrdersRoutes);
 app.use(['/api/shop/farmers', '/api/v1/shop/custom-farmers'], shopFarmersRoutes);
-app.use(['/api/shop/cultures', '/api/v1/shop/cultures'], shopCulturesRoutes);
-app.use(['/api/shop/sales', '/api/v1/shop/sales'], salesRoutes);
-app.use(['/api/shop/orders', '/api/v1/shop/orders'], shopOrdersRoutes);
-app.use(['/api/shop/dashboard', '/api/v1/shop/dashboard'], dashboardRoutes);
-app.use(['/api/shop/reports', '/api/v1/shop/reports'], reportsRoutes);
+app.use(['/api/shop/cultures', '/api/cultures', '/api/v1/shop/cultures'], shopCulturesRoutes);
+app.use(['/api/shop/sales', '/api/sales', '/api/v1/shop/sales'], salesRoutes);
+app.use(['/api/shop/orders', '/api/shop-orders', '/api/v1/shop/orders'], shopOrdersRoutes);
+app.use(['/api/shop/dashboard', '/api/dashboard', '/api/v1/shop/dashboard'], dashboardRoutes);
+app.use(['/api/shop/reports', '/api/reports', '/api/v1/shop/reports'], reportsRoutes);
 app.use(['/api/shop/roles', '/api/shop/permissions', '/api/v1/shop/roles'], rolesRoutes);
 app.use(['/api/shop/audit-logs', '/api/v1/shop/audit-logs'], auditRoutes);
-app.use(['/api/shop/whatsapp', '/api/v1/shop/whatsapp'], whatsappRoutes);
+app.use(['/api/shop/whatsapp', '/api/whatsapp', '/api/v1/shop/whatsapp'], whatsappRoutes);
 
 app.use('/api/admin', adminApi);
 app.use('/api/shop', shopOrders);

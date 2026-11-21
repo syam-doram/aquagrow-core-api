@@ -16,7 +16,7 @@ import { authenticate, requireAnyAdmin } from '../middleware/auth.js';
 const router = express.Router();
 router.use(authenticate);
 
-router.get('/', requireAnyAdmin, async (req, res) => {
+const getDashboardSummary = async (req: any, res: any) => {
   try {
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
@@ -118,6 +118,11 @@ router.get('/', requireAnyAdmin, async (req, res) => {
     console.error('[shop dashboard GET]', e);
     res.status(500).json({ error: 'Server error: ' + e.message });
   }
-});
+};
+
+// GET /  — full dashboard summary
+router.get('/', requireAnyAdmin, getDashboardSummary);
+// GET /summary — alias used by some frontend builds
+router.get('/summary', requireAnyAdmin, getDashboardSummary);
 
 export default router;
