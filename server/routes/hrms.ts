@@ -385,7 +385,7 @@ router.post('/payroll/bulk-generate', hrmsAuth, requireFinance, async (req: any,
     if (!month) return res.status(400).json({ error: 'month (YYYY-MM) is required' });
 
     const employees = await HREmployee.find({ status: 'active' });
-    const results = [];
+    const results: any[] = [];
     for (const emp of employees) {
       const exists = await HRPayroll.findOne({ empId: emp.empId, month });
       if (exists) { results.push({ empId: emp.empId, status: 'skipped' }); continue; }
