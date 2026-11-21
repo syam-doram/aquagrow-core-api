@@ -30,6 +30,17 @@ import daycloseRoutes from './routes/dayclose.js';
 import ledgerRoutes from './routes/ledger.js';
 import farmersRoutes from './routes/farmers.js';
 import harvestsRoutes from './routes/harvests.js';
+import suppliersRoutes from './routes/suppliers.js';
+import purchaseOrdersRoutes from './routes/purchaseOrders.js';
+import shopFarmersRoutes from './routes/shopFarmers.js';
+import shopCulturesRoutes from './routes/shopCultures.js';
+import salesRoutes from './routes/sales.js';
+import shopOrdersRoutes from './routes/shopOrders.js';
+import dashboardRoutes from './routes/dashboard.js';
+import reportsRoutes from './routes/reports.js';
+import rolesRoutes from './routes/roles.js';
+import auditRoutes from './routes/audit.js';
+import whatsappRoutes from './routes/whatsapp.js';
 
 const app = express();
 app.set('trust proxy', 1);
@@ -102,14 +113,27 @@ app.use(['/api/masterbox', '/api/v1/iot/masterbox'], masterboxRoutes);
 app.use(['/api/device', '/api/v1/iot/device'], deviceRoutes);
 
 // Each ERP router owns its own resource path and permission middleware.
-app.use(['/api/staff', '/api/v1/shop/staff'], staffRoutes);
-app.use(['/api/receipts', '/api/v1/shop/receipts'], receiptsRoutes);
-app.use(['/api/products', '/api/v1/shop/products'], productsRoutes);
-app.use(['/api/invoices', '/api/v1/shop/invoices'], invoicesRoutes);
-app.use(['/api/dayclose', '/api/v1/shop/dayclose'], daycloseRoutes);
-app.use(['/api/ledger', '/api/v1/shop/ledger'], ledgerRoutes);
+app.use(['/api/staff', '/api/shop/staff', '/api/v1/shop/staff'], staffRoutes);
+app.use(['/api/receipts', '/api/shop/receipts', '/api/v1/shop/receipts'], receiptsRoutes);
+app.use(['/api/products', '/api/shop/products', '/api/v1/shop/products'], productsRoutes);
+app.use(['/api/invoices', '/api/shop/invoices', '/api/v1/shop/invoices'], invoicesRoutes);
+app.use(['/api/dayclose', '/api/shop/dayclose', '/api/v1/shop/dayclose'], daycloseRoutes);
+app.use(['/api/ledger', '/api/shop/ledger', '/api/v1/shop/ledger'], ledgerRoutes);
 app.use(['/api/farmers', '/api/v1/shop/farmers'], farmersRoutes);
-app.use(['/api/harvests', '/api/v1/shop/harvests'], harvestsRoutes);
+app.use(['/api/harvests', '/api/shop/harvests', '/api/v1/shop/harvests'], harvestsRoutes);
+
+// ── NEW AquaGrow Shop ERP Routes ──────────────────────────────────────────────
+app.use(['/api/suppliers', '/api/shop/suppliers', '/api/v1/shop/suppliers'], suppliersRoutes);
+app.use(['/api/purchase-orders', '/api/shop/purchases', '/api/v1/shop/purchases'], purchaseOrdersRoutes);
+app.use(['/api/shop/farmers', '/api/v1/shop/custom-farmers'], shopFarmersRoutes);
+app.use(['/api/shop/cultures', '/api/v1/shop/cultures'], shopCulturesRoutes);
+app.use(['/api/shop/sales', '/api/v1/shop/sales'], salesRoutes);
+app.use(['/api/shop/orders', '/api/v1/shop/orders'], shopOrdersRoutes);
+app.use(['/api/shop/dashboard', '/api/v1/shop/dashboard'], dashboardRoutes);
+app.use(['/api/shop/reports', '/api/v1/shop/reports'], reportsRoutes);
+app.use(['/api/shop/roles', '/api/shop/permissions', '/api/v1/shop/roles'], rolesRoutes);
+app.use(['/api/shop/audit-logs', '/api/v1/shop/audit-logs'], auditRoutes);
+app.use(['/api/shop/whatsapp', '/api/v1/shop/whatsapp'], whatsappRoutes);
 
 app.use('/api/admin', adminApi);
 app.use('/api/shop', shopOrders);

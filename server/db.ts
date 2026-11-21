@@ -70,74 +70,74 @@ const PondSchema = new mongoose.Schema({
   aeratorSnoozedUntil: { type: String },
   // Current aerator state + cumulative logs
   aerators: {
-    count:       { type: Number, default: 0 },
-    hp:          { type: Number, default: 1 },
-    positions:   [{ type: String }],
-    addedNew:    { type: Boolean, default: false },
+    count: { type: Number, default: 0 },
+    hp: { type: Number, default: 1 },
+    positions: [{ type: String }],
+    addedNew: { type: Boolean, default: false },
     lastUpdated: { type: String },
-    lastDoc:     { type: Number, default: 0 },
+    lastDoc: { type: Number, default: 0 },
     log: [{
-      doc:       { type: Number },
-      date:      { type: String },
-      count:     { type: Number },
-      hp:        { type: Number },
+      doc: { type: Number },
+      date: { type: String },
+      count: { type: Number },
+      hp: { type: Number },
       positions: [{ type: String }],
-      addedNew:  { type: Boolean, default: false },
-      notes:     { type: String },
+      addedNew: { type: Boolean, default: false },
+      notes: { type: String },
     }],
   },
 }, { timestamps: true });
 
 // Separate aerator log collection for cross-pond queries & history
 const AeratorLogSchema = new mongoose.Schema({
-  userId:    { type: String, required: true },
-  pondId:    { type: String, required: true },
-  pondName:  { type: String },
-  doc:       { type: Number, required: true },
-  date:      { type: String },
-  count:     { type: Number },
-  hp:        { type: Number },
+  userId: { type: String, required: true },
+  pondId: { type: String, required: true },
+  pondName: { type: String },
+  doc: { type: Number, required: true },
+  date: { type: String },
+  count: { type: Number },
+  hp: { type: Number },
   positions: [{ type: String }],
-  addedNew:  { type: Boolean, default: false },
-  notes:     { type: String },
-  sopMet:    { type: Boolean, default: false },    // was count >= recommended?
+  addedNew: { type: Boolean, default: false },
+  notes: { type: String },
+  sopMet: { type: Boolean, default: false },    // was count >= recommended?
   recommended: { type: Number },                   // recommended at time of log
-  source:    { type: String, default: 'pond_detail' }, // 'pond_detail' | 'alert_confirm'
+  source: { type: String, default: 'pond_detail' }, // 'pond_detail' | 'alert_confirm'
 }, { timestamps: true });
 
 
 const FeedLogSchema = new mongoose.Schema({
-  pondId:      { type: String, required: true },
-  userId:      { type: String, required: true },
-  date:        { type: String },
-  time:        { type: String },           // slot time e.g. '06:00 AM'
-  brand:       { type: String },           // feed brand name
-  feedType:    { type: String },           // 'Starter' | 'Grower' | 'Finisher'
-  feedNo:      { type: String },           // 'Pellet No. 2' etc.
-  quantity:    { type: Number },           // kg applied
-  cost:        { type: Number },           // estimated cost (₹)
-  doc:         { type: Number },           // day of culture
-  slotLabel:   { type: String },           // 'Morning 1', 'Afternoon' etc.
-  notes:       { type: String },           // any free-form note
-  fcr:         { type: Number },           // FCR value at time of logging
+  pondId: { type: String, required: true },
+  userId: { type: String, required: true },
+  date: { type: String },
+  time: { type: String },           // slot time e.g. '06:00 AM'
+  brand: { type: String },           // feed brand name
+  feedType: { type: String },           // 'Starter' | 'Grower' | 'Finisher'
+  feedNo: { type: String },           // 'Pellet No. 2' etc.
+  quantity: { type: Number },           // kg applied
+  cost: { type: Number },           // estimated cost (₹)
+  doc: { type: Number },           // day of culture
+  slotLabel: { type: String },           // 'Morning 1', 'Afternoon' etc.
+  notes: { type: String },           // any free-form note
+  fcr: { type: Number },           // FCR value at time of logging
   adjustmentFactor: { type: Number },      // lunar/weather adjustment applied
 }, { timestamps: true });
 
 const MedicineLogSchema = new mongoose.Schema({
-  pondId:        { type: String, required: true },
-  userId:        { type: String, required: true },
-  date:          { type: String },
-  name:          { type: String },           // product / medicine name
-  category:      { type: String },           // 'probiotic' | 'antibiotic' | 'mineral' | 'pond_prep' | 'supplement'
-  dosage:        { type: String },           // dose string e.g. '2 kg/acre'
-  dosageKg:      { type: Number },           // numeric kg
+  pondId: { type: String, required: true },
+  userId: { type: String, required: true },
+  date: { type: String },
+  name: { type: String },           // product / medicine name
+  category: { type: String },           // 'probiotic' | 'antibiotic' | 'mineral' | 'pond_prep' | 'supplement'
+  dosage: { type: String },           // dose string e.g. '2 kg/acre'
+  dosageKg: { type: Number },           // numeric kg
   applicationMethod: { type: String },       // 'broadcast' | 'dissolved'
-  purpose:       { type: String },           // reason for application
-  doc:           { type: Number },           // day of culture
-  notes:         { type: String },
+  purpose: { type: String },           // reason for application
+  doc: { type: Number },           // day of culture
+  notes: { type: String },
   soakedInWater: { type: Boolean },
-  appliedAt:     { type: String },           // time of application
-  sopTag:        { type: String },           // which SOP triggered this log
+  appliedAt: { type: String },           // time of application
+  sopTag: { type: String },           // which SOP triggered this log
 }, { timestamps: true });
 
 const RefreshTokenSchema = new mongoose.Schema({
@@ -147,45 +147,45 @@ const RefreshTokenSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const WaterLogSchema = new mongoose.Schema({
-  pondId:       { type: String, required: true },
-  userId:       { type: String, required: true },
-  date:         { type: String, required: true },
-  time:         { type: String },              // time of reading
-  ph:           { type: Number },
-  do:           { type: Number },              // dissolved oxygen mg/L
-  temp:         { type: Number },              // °C
-  temperature:  { type: Number },              // alias for temp (backward compat)
-  salinity:     { type: Number },              // ppt
-  ammonia:      { type: Number },              // mg/L
-  alkalinity:   { type: Number },              // mg/L
-  turbidity:    { type: Number },              // NTU / Secchi
-  tds:          { type: Number },
-  nitrite:      { type: Number },
-  nitrate:      { type: Number },
-  mortality:    { type: Number },              // count of dead shrimp
-  waterColor:   { type: String },              // farmer's observation
-  notes:        { type: String },
-  doc:          { type: Number },
-  alerts:       [{ type: String }],            // auto-generated alert strings
-  isSynced:     { type: Boolean, default: true }
+  pondId: { type: String, required: true },
+  userId: { type: String, required: true },
+  date: { type: String, required: true },
+  time: { type: String },              // time of reading
+  ph: { type: Number },
+  do: { type: Number },              // dissolved oxygen mg/L
+  temp: { type: Number },              // °C
+  temperature: { type: Number },              // alias for temp (backward compat)
+  salinity: { type: Number },              // ppt
+  ammonia: { type: Number },              // mg/L
+  alkalinity: { type: Number },              // mg/L
+  turbidity: { type: Number },              // NTU / Secchi
+  tds: { type: Number },
+  nitrite: { type: Number },
+  nitrate: { type: Number },
+  mortality: { type: Number },              // count of dead shrimp
+  waterColor: { type: String },              // farmer's observation
+  notes: { type: String },
+  doc: { type: Number },
+  alerts: [{ type: String }],            // auto-generated alert strings
+  isSynced: { type: Boolean, default: true }
 }, { timestamps: true });
 
 const SOPLogSchema = new mongoose.Schema({
-  pondId:       { type: String, required: true },
-  userId:       { type: String, required: true },
-  date:         { type: String, required: true },
-  sopType:      { type: String },              // 'daily' | 'weekly' | 'disease' | 'feed' | 'water'
-  doc:          { type: Number },
-  avgWeight:    { type: Number },              // g
-  feedQty:      { type: Number },              // kg
-  mortality:    { type: Number },
-  checks:       { type: Map, of: Boolean },    // completed SOP checkboxes
-  actions:      [{ type: String }],            // list of actions taken
-  notes:        { type: String },
-  diseaseFlag:  { type: String },              // if triggered by disease detection
-  severity:     { type: String },              // 'safe' | 'warning' | 'critical'
-  completedBy:  { type: String },              // user name
-  isSynced:     { type: Boolean, default: true }
+  pondId: { type: String, required: true },
+  userId: { type: String, required: true },
+  date: { type: String, required: true },
+  sopType: { type: String },              // 'daily' | 'weekly' | 'disease' | 'feed' | 'water'
+  doc: { type: Number },
+  avgWeight: { type: Number },              // g
+  feedQty: { type: Number },              // kg
+  mortality: { type: Number },
+  checks: { type: Map, of: Boolean },    // completed SOP checkboxes
+  actions: [{ type: String }],            // list of actions taken
+  notes: { type: String },
+  diseaseFlag: { type: String },              // if triggered by disease detection
+  severity: { type: String },              // 'safe' | 'warning' | 'critical'
+  completedBy: { type: String },              // user name
+  isSynced: { type: Boolean, default: true }
 }, { timestamps: true, strict: false });       // strict:false allows extra dynamic fields
 
 const ExpenseSchema = new mongoose.Schema({
@@ -208,10 +208,10 @@ const HarvestRequestSchema = new mongoose.Schema({
   avgWeight: { type: Number, required: true },
   targetedBuyers: [String],
   broadcastRadius: { type: Number, default: 150 },
-  status: { 
-    type: String, 
-    enum: ['pending', 'accepted', 'quality_checked', 'weighed', 'rate_confirmed', 'harvested', 'paid', 'completed', 'cancelled'], 
-    default: 'pending' 
+  status: {
+    type: String,
+    enum: ['pending', 'accepted', 'quality_checked', 'weighed', 'rate_confirmed', 'harvested', 'paid', 'completed', 'cancelled'],
+    default: 'pending'
   },
   cancellationReason: { type: String },
   qualityReports: [{
@@ -234,44 +234,44 @@ const HarvestRequestSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const ROIEntrySchema = new mongoose.Schema({
-  userId:              { type: String, required: true },
-  pondId:              { type: String, required: true },
-  harvestDate:         { type: String },
-  harvestWeightKg:     { type: Number },
-  countPerKg:         { type: Number },
-  survivalRate:        { type: Number },
-  gradeA:              { type: Number },
-  gradeB:              { type: Number },
+  userId: { type: String, required: true },
+  pondId: { type: String, required: true },
+  harvestDate: { type: String },
+  harvestWeightKg: { type: Number },
+  countPerKg: { type: Number },
+  survivalRate: { type: Number },
+  gradeA: { type: Number },
+  gradeB: { type: Number },
   // Investments
-  seedCost:            { type: Number, default: 0 },
-  feedCost:            { type: Number, default: 0 },
-  medicineCost:        { type: Number, default: 0 },
-  laborCost:           { type: Number, default: 0 },
-  utilityCost:         { type: Number, default: 0 },
-  infrastructureCost:  { type: Number, default: 0 },
-  otherCost:           { type: Number, default: 0 },
-  cultureDays:         { type: Number },
+  seedCost: { type: Number, default: 0 },
+  feedCost: { type: Number, default: 0 },
+  medicineCost: { type: Number, default: 0 },
+  laborCost: { type: Number, default: 0 },
+  utilityCost: { type: Number, default: 0 },
+  infrastructureCost: { type: Number, default: 0 },
+  otherCost: { type: Number, default: 0 },
+  cultureDays: { type: Number },
   // Revenue
-  saleAmountTotal:     { type: Number, default: 0 },
-  buyerName:           { type: String },
-  pricePerKg:          { type: Number },
-  subsidyAmount:       { type: Number, default: 0 },
-  notes:               { type: String },
+  saleAmountTotal: { type: Number, default: 0 },
+  buyerName: { type: String },
+  pricePerKg: { type: Number },
+  subsidyAmount: { type: Number, default: 0 },
+  notes: { type: String },
   // Computed
-  totalInvested:       { type: Number },
-  totalRevenue:        { type: Number },
-  netProfit:           { type: Number },
-  roi:                 { type: Number },
+  totalInvested: { type: Number },
+  totalRevenue: { type: Number },
+  netProfit: { type: Number },
+  roi: { type: Number },
 }, { timestamps: true });
 
 const NotificationLogSchema = new mongoose.Schema({
-  userId:    { type: String, required: true },
-  title:     { type: String },
-  body:      { type: String },
-  type:      { type: String, default: 'alert' },  // 'alert' | 'harvest' | 'aerator' | 'feed'
-  deepLink:  { type: String },
-  isRead:    { type: Boolean, default: false },
-  date:      { type: String },
+  userId: { type: String, required: true },
+  title: { type: String },
+  body: { type: String },
+  type: { type: String, default: 'alert' },  // 'alert' | 'harvest' | 'aerator' | 'feed'
+  deepLink: { type: String },
+  isRead: { type: Boolean, default: false },
+  date: { type: String },
 }, { timestamps: true });
 
 // ═══════════════════════════════════════════════════════════════
@@ -294,23 +294,23 @@ export const ADMIN_ROLES_ENUM = [
 export type AdminRoleType = typeof ADMIN_ROLES_ENUM[number];
 
 const AdminUserSchema = new mongoose.Schema({
-  name:        { type: String, required: true },
+  name: { type: String, required: true },
   phoneNumber: { type: String, required: true, unique: true },   // phone is globally unique for admins
-  email:       { type: String },
-  password:    { type: String, required: true },
+  email: { type: String },
+  password: { type: String, required: true },
   role: {
-    type:    String,
-    enum:    ADMIN_ROLES_ENUM,
+    type: String,
+    enum: ADMIN_ROLES_ENUM,
     default: 'super_admin',
   },
-  isActive:    { type: Boolean, default: true },      // soft disable without deleting
-  location:    { type: String },
-  lastLogin:   { type: Date },
-  createdBy:   { type: String },                      // _id of admin who created this row
+  isActive: { type: Boolean, default: true },      // soft disable without deleting
+  location: { type: String },
+  lastLogin: { type: Date },
+  createdBy: { type: String },                      // _id of admin who created this row
   permissions: [String],                              // optional fine-grained overrides
 }, { timestamps: true, collection: 'adminusers' });
 
-export const User      = mongoose.model('User', UserSchema);
+export const User = mongoose.model('User', UserSchema);
 export const AdminUser = mongoose.model('AdminUser', AdminUserSchema);
 export const Subscription = mongoose.model('Subscription', SubscriptionSchema);
 export const Pond = mongoose.model('Pond', PondSchema);
@@ -346,17 +346,17 @@ export const AeratorLog = mongoose.model('AeratorLog', AeratorLogSchema);
  *   slave  — Smart Box (field sensor/relay). N per master.
  */
 const EspDeviceSchema = new mongoose.Schema({
-  userId:      { type: String, required: true },          // owning farmer
-  pondId:      { type: String, required: true },          // primary pond (first selected, used by firmware)
-  pondIds:     [{ type: String }],                        // all ponds covered (Master Box multi-pond array)
-  mac:         { type: String, required: true, unique: true }, // internal MAC — never shown to farmers
-  role:        { type: String, enum: ['master', 'slave'], required: true },
-  masterMac:   { type: String },                          // internal: slave's master MAC for ESP-NOW routing
+  userId: { type: String, required: true },          // owning farmer
+  pondId: { type: String, required: true },          // primary pond (first selected, used by firmware)
+  pondIds: [{ type: String }],                        // all ponds covered (Master Box multi-pond array)
+  mac: { type: String, required: true, unique: true }, // internal MAC — never shown to farmers
+  role: { type: String, enum: ['master', 'slave'], required: true },
+  masterMac: { type: String },                          // internal: slave's master MAC for ESP-NOW routing
   // ── Box ID System (farmer-visible identity) ───────────────────────────────
-  boxId:       { type: String, sparse: true },            // e.g. 'SB001', 'MB001' — pre-programmed in firmware
-  masterId:    { type: String },                          // boxId of the paired Master (for slaves)
+  boxId: { type: String, sparse: true },            // e.g. 'SB001', 'MB001' — pre-programmed in firmware
+  masterId: { type: String },                          // boxId of the paired Master (for slaves)
   displayName: { type: String },                          // farmer-assigned name e.g. 'Pond 1 Aerator'
-  deviceType:  {
+  deviceType: {
     type: String,
     enum: ['AERATOR', 'SENSOR', 'FEEDER', 'PUMP', 'CUSTOM', 'MASTER'],
     default: 'AERATOR',
@@ -367,28 +367,28 @@ const EspDeviceSchema = new mongoose.Schema({
     default: 'unpaired',
   },
   // ── Legacy label field (keep for backward compatibility) ──────────────────
-  label:       { type: String },                          // deprecated: use displayName
-  apiKey:      { type: String, required: true, unique: true }, // 64-char hex secret stored on device
+  label: { type: String },                          // deprecated: use displayName
+  apiKey: { type: String, required: true, unique: true }, // 64-char hex secret stored on device
   firmwareVersion: { type: String },                      // optional: OTA tracking
-  isActive:    { type: Boolean, default: true },
-  lastSeen:    { type: Date },                            // updated on every ingest/poll
+  isActive: { type: Boolean, default: true },
+  lastSeen: { type: Date },                            // updated on every ingest/poll
   heartbeatAt: { type: Date },                            // updated on every /heartbeat call
   // ── Real-time state (updated on every ingest + ACK) ──────────────────────
-  aeratorState:  { type: String, enum: ['ON', 'OFF', 'UNKNOWN'], default: 'UNKNOWN' },
-  voltage:       { type: Number },                        // last reported voltage (V)
-  current:       { type: Number },                        // last reported current (A)
-  powerWatts:    { type: Number },                        // last reported power (W)
+  aeratorState: { type: String, enum: ['ON', 'OFF', 'UNKNOWN'], default: 'UNKNOWN' },
+  voltage: { type: Number },                        // last reported voltage (V)
+  current: { type: Number },                        // last reported current (A)
+  powerWatts: { type: Number },                        // last reported power (W)
   // ── Real motor status (derived from relay + voltage + current) ────────────
-  motorStatus:    {
+  motorStatus: {
     type: String,
     enum: ['RUNNING', 'STOPPED', 'POWER_FAILURE', 'FAULT', 'OVERCURRENT'],
     default: 'STOPPED',
   },
-  motorRunning:   { type: Boolean, default: false },      // true = aerator actually spinning
+  motorRunning: { type: Boolean, default: false },      // true = aerator actually spinning
   powerAvailable: { type: Boolean, default: true },       // false = EB off / MCB tripped
-  relayStatus:    { type: Boolean, default: false },      // physical relay state
-  signalStrength:{ type: Number },                        // RSSI from slave (dBm)
-  metadata:      { type: Map, of: String },               // flexible extra fields
+  relayStatus: { type: Boolean, default: false },      // physical relay state
+  signalStrength: { type: Number },                        // RSSI from slave (dBm)
+  metadata: { type: Map, of: String },               // flexible extra fields
   aeratorLabels: [{ type: String }],                      // which aerators this Smart Box controls
 }, { timestamps: true, collection: 'espdevices' });
 
@@ -407,37 +407,37 @@ EspDeviceSchema.index({ pondIds: 1, role: 1 });
  * High-frequency: potentially every 30 s per pond.
  */
 const EspSensorReadingSchema = new mongoose.Schema({
-  deviceId:    { type: String, required: true },          // EspDevice._id (master)
-  pondId:      { type: String, required: true },
-  userId:      { type: String, required: true },
+  deviceId: { type: String, required: true },          // EspDevice._id (master)
+  pondId: { type: String, required: true },
+  userId: { type: String, required: true },
   // Water quality parameters
-  do:          { type: Number },                          // dissolved oxygen mg/L
-  ph:          { type: Number },
-  temp:        { type: Number },                          // °C
-  salinity:    { type: Number },                          // ppt
-  ammonia:     { type: Number },                          // mg/L
-  turbidity:   { type: Number },                          // NTU
-  tds:         { type: Number },                          // mg/L
-  nitrite:     { type: Number },
-  nitrate:     { type: Number },
+  do: { type: Number },                          // dissolved oxygen mg/L
+  ph: { type: Number },
+  temp: { type: Number },                          // °C
+  salinity: { type: Number },                          // ppt
+  ammonia: { type: Number },                          // mg/L
+  turbidity: { type: Number },                          // NTU
+  tds: { type: Number },                          // mg/L
+  nitrite: { type: Number },
+  nitrate: { type: Number },
   // Power telemetry from Master
-  voltage:     { type: Number },                          // V
-  current:     { type: Number },                          // A
-  powerWatts:  { type: Number },                          // W
+  voltage: { type: Number },                          // V
+  current: { type: Number },                          // A
+  powerWatts: { type: Number },                          // W
   aeratorState: { type: String, enum: ['ON', 'OFF', 'UNKNOWN'] }, // master aerator state at this reading
   // Per-slave data reported by Master via ESP-NOW
   slaveReadings: [{
-    mac:          { type: String },                       // slave MAC
+    mac: { type: String },                       // slave MAC
     aeratorState: { type: String, enum: ['ON', 'OFF', 'UNKNOWN'] },
-    voltage:      { type: Number },
-    current:      { type: Number },
-    powerWatts:   { type: Number },
-    rssi:         { type: Number },                       // ESP-NOW signal strength (dBm)
+    voltage: { type: Number },
+    current: { type: Number },
+    powerWatts: { type: Number },
+    rssi: { type: Number },                       // ESP-NOW signal strength (dBm)
   }],
   // Status flags auto-computed on ingest
-  alerts:      [{ type: String }],                        // e.g. ['DO_LOW', 'PH_HIGH']
-  rawPayload:  { type: Map, of: mongoose.Schema.Types.Mixed }, // preserve any extra fields from firmware
-  recordedAt:  { type: Date, required: true },            // timestamp from ESP32 (or server time if missing)
+  alerts: [{ type: String }],                        // e.g. ['DO_LOW', 'PH_HIGH']
+  rawPayload: { type: Map, of: mongoose.Schema.Types.Mixed }, // preserve any extra fields from firmware
+  recordedAt: { type: Date, required: true },            // timestamp from ESP32 (or server time if missing)
 }, { timestamps: true, collection: 'espsensorreadings' });
 
 // TTL: auto-delete readings older than 90 days to keep collection lean
@@ -456,28 +456,28 @@ EspSensorReadingSchema.index({ deviceId: 1, recordedAt: -1 });
  *  timeout   : Master never polled within TTL (5 min default)
  */
 const EspAeratorCommandSchema = new mongoose.Schema({
-  userId:      { type: String, required: true },          // farmer who issued it
-  pondId:      { type: String, required: true },
-  masterMac:   { type: String, required: true },          // internal: which master should relay this
-  targetMac:   { type: String, required: true },          // internal: slave MAC for ESP-NOW routing
+  userId: { type: String, required: true },          // farmer who issued it
+  pondId: { type: String, required: true },
+  masterMac: { type: String, required: true },          // internal: which master should relay this
+  targetMac: { type: String, required: true },          // internal: slave MAC for ESP-NOW routing
   // ── Box ID references (farmer-facing identifiers) ────────────────────────
   targetBoxId: { type: String },                          // e.g. 'SB001' — shown in UI
   targetDisplayName: { type: String },                    // e.g. 'Pond 1 Aerator' — shown in UI
-  action:      { type: String, enum: ['ON', 'OFF', 'SPEED', 'RESET'], required: true },
+  action: { type: String, enum: ['ON', 'OFF', 'SPEED', 'RESET'], required: true },
   params: {
-    speed:           { type: Number, min: 0, max: 100 },  // % for SPEED command
+    speed: { type: Number, min: 0, max: 100 },  // % for SPEED command
     durationMinutes: { type: Number },                    // optional timed ON
   },
-  status:      {
+  status: {
     type: String,
     enum: ['pending', 'sent', 'confirmed', 'failed', 'timeout'],
     default: 'pending',
   },
-  issuedAt:    { type: Date, default: Date.now },
-  sentAt:      { type: Date },                            // when Master picked it up
+  issuedAt: { type: Date, default: Date.now },
+  sentAt: { type: Date },                            // when Master picked it up
   confirmedAt: { type: Date },                            // when Slave acknowledged
   errorMessage: { type: String },                         // for failed status
-  notes:       { type: String },                          // optional note from farmer
+  notes: { type: String },                          // optional note from farmer
 }, { timestamps: true, collection: 'espcommands' });
 
 // Index for fast pending poll query
@@ -489,10 +489,10 @@ EspAeratorCommandSchema.index({ targetBoxId: 1 });
 // One document per heartbeat from a Master. Used for uptime analysis.
 // The important online/offline signal lives on EspDevice.lastSeen / heartbeatAt.
 const EspHeartbeatSchema = new mongoose.Schema({
-  deviceId:  { type: String, required: true },
-  pondId:    { type: String, required: true },
-  mac:       { type: String, required: true },
-  at:        { type: Date, default: Date.now },
+  deviceId: { type: String, required: true },
+  pondId: { type: String, required: true },
+  mac: { type: String, required: true },
+  at: { type: Date, default: Date.now },
 }, { timestamps: false, collection: 'espheartbeats' });
 
 // TTL: auto-delete heartbeat docs older than 2 hours
@@ -504,12 +504,12 @@ EspHeartbeatSchema.index({ deviceId: 1, at: -1 });
 // The farmer app polls this to show "New Device Found" banners.
 // Entries expire after 24 hours if not assigned.
 const EspDiscoverQueueSchema = new mongoose.Schema({
-  boxId:        { type: String, required: true },         // e.g. 'SB001' from firmware
-  senderMac:    { type: String },                         // internal MAC of the Smart Box
-  masterId:     { type: String, required: true },         // boxId of the Master that forwarded this
-  masterMac:    { type: String },                         // internal MAC of the Master
-  userId:       { type: String, required: true },         // owning farmer
-  pondId:       { type: String, required: true },         // pond the Master belongs to
+  boxId: { type: String, required: true },         // e.g. 'SB001' from firmware
+  senderMac: { type: String },                         // internal MAC of the Smart Box
+  masterId: { type: String, required: true },         // boxId of the Master that forwarded this
+  masterMac: { type: String },                         // internal MAC of the Master
+  userId: { type: String, required: true },         // owning farmer
+  pondId: { type: String, required: true },         // pond the Master belongs to
   discoveredAt: { type: Date, default: Date.now },        // when DISCOVER was received
 }, { timestamps: false, collection: 'espdiscoverqueue' });
 
@@ -519,11 +519,11 @@ EspDiscoverQueueSchema.index({ userId: 1, pondId: 1 });
 // TTL: auto-delete unassigned entries after 24 hours
 EspDiscoverQueueSchema.index({ discoveredAt: 1 }, { expireAfterSeconds: 24 * 60 * 60 });
 
-export const EspDevice          = mongoose.model('EspDevice', EspDeviceSchema);
-export const EspSensorReading   = mongoose.model('EspSensorReading', EspSensorReadingSchema);
-export const EspAeratorCommand  = mongoose.model('EspAeratorCommand', EspAeratorCommandSchema);
-export const EspHeartbeat       = mongoose.model('EspHeartbeat', EspHeartbeatSchema);
-export const EspDiscoverQueue   = mongoose.model('EspDiscoverQueue', EspDiscoverQueueSchema);
+export const EspDevice = mongoose.model('EspDevice', EspDeviceSchema);
+export const EspSensorReading = mongoose.model('EspSensorReading', EspSensorReadingSchema);
+export const EspAeratorCommand = mongoose.model('EspAeratorCommand', EspAeratorCommandSchema);
+export const EspHeartbeat = mongoose.model('EspHeartbeat', EspHeartbeatSchema);
+export const EspDiscoverQueue = mongoose.model('EspDiscoverQueue', EspDiscoverQueueSchema);
 
 
 export const connectDB = async () => {
@@ -544,17 +544,39 @@ export const connectDB = async () => {
 
 // Product schema: represents a catalog item.
 const ProductSchema = new mongoose.Schema({
-  company: { type: String, required: true }, // brand/company
+  company: { type: String, required: true }, // manufacturer / company
+  brand: { type: String },                   // brand name
   name: { type: String, required: true },
-  code: { type: String, unique: true, required: true },
+  code: { type: String, unique: true, required: true }, // SKU
   category: { type: String, enum: ['Feed', 'Medicine', 'Mineral', 'Equipment', 'Other'], required: true },
-  packSize: { type: Number }, // e.g., 25 for 25kg bag
-  unit: { type: String }, // e.g., 'kg', 'bag', 'bottle'
+  productType: { type: String },             // type/subcategory
+  hsnCode: { type: String },                 // HSN code for GST compliance
+  packSize: { type: Number },                // e.g., 25 for 25kg bag
+  unit: { type: String },                    // e.g., 'kg', 'bag', 'bottle'
   baseStockUnit: { type: String, required: true }, // unit used for stock accounting, e.g., 'kg'
   batchTracking: { type: Boolean, default: false },
   expiryTracking: { type: Boolean, default: false },
-  mrp: { type: Number }, // Manufacturer Retail Price
-  approvedSellingRate: { type: Number }, // Owner approved rate
+  mrp: { type: Number },                     // Manufacturer Retail Price
+  purchaseRate: { type: Number },            // confidential purchase rate per unit
+  rateTaxBasis: { type: String, enum: ['inclusive', 'exclusive'], default: 'inclusive' },
+  gstRate: { type: Number, default: 0 },     // GST % e.g. 5, 12, 18
+  gstInclusive: { type: Boolean, default: true },
+  discountAmount: { type: Number, default: 0 },
+  discountPercentage: { type: Number, default: 0 },
+  gstAmount: { type: Number, default: 0 },
+  totalPurchaseCost: { type: Number },       // total purchase invoice cost
+  landedCostPerUnit: { type: Number },       // rate + allocated transport/loading
+  stockQuantity: { type: Number, default: 0 }, // current aggregate on-hand stock
+  image: { type: String },                   // product image URL
+  usageInstructions: {
+    purpose: { type: String },
+    dosage: { type: String },
+    timing: { type: String },
+    applicationMethod: { type: String },
+    mixingInstructions: { type: String },
+    precautions: { type: String },
+  },
+  approvedSellingRate: { type: Number },     // Owner approved rate
   sellingDiscountPercent: { type: Number, default: 0 }, // % discount for farmer
   isActive: { type: Boolean, default: true },
 }, { timestamps: true });
@@ -563,9 +585,19 @@ const ProductSchema = new mongoose.Schema({
 const BatchSchema = new mongoose.Schema({
   productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
   batchNumber: { type: String, required: true },
+  supplierId: { type: mongoose.Schema.Types.ObjectId, ref: 'Supplier' },
+  purchaseDate: { type: Date },
   expiryDate: { type: Date },
-  quantity: { type: Number, required: true }, // stored in baseStockUnit
-  unitCost: { type: Number }, // purchase cost per base unit
+  quantity: { type: Number, required: true }, // stored in baseStockUnit (available)
+  purchasedQuantity: { type: Number },
+  receivedQuantity: { type: Number },
+  availableQuantity: { type: Number },
+  damagedQuantity: { type: Number, default: 0 },
+  purchaseRate: { type: Number },            // confidential purchase rate
+  gst: { type: Number },                     // GST % or amount
+  landedCost: { type: Number },              // unit landed cost
+  unitCost: { type: Number },                // purchase cost per base unit
+  status: { type: String, enum: ['active', 'depleted', 'expired', 'quarantined'], default: 'active' },
 }, { timestamps: true });
 BatchSchema.index({ productId: 1, batchNumber: 1 }, { unique: true });
 
@@ -696,18 +728,18 @@ const WhatsAppJobSchema = new mongoose.Schema({
 // ERP Harvest Draft — staff submits without culture linking.
 // Owner reviews in admin panel; can be linked to a Culture later.
 const HarvestDraftSchema = new mongoose.Schema({
-  farmerId:   { type: String, required: true },      // AquaGrow users collection id
+  farmerId: { type: String, required: true },      // AquaGrow users collection id
   farmerName: { type: String },
-  pondId:     { type: String, required: true },
-  weightKg:   { type: Number, required: true, min: 0 },
-  date:       { type: Date,   default: Date.now },
-  notes:      { type: String },
-  status:     { type: String, enum: ['draft', 'reviewed', 'settled'], default: 'draft' },
-  submittedBy:   { type: String },  // staff user id
+  pondId: { type: String, required: true },
+  weightKg: { type: Number, required: true, min: 0 },
+  date: { type: Date, default: Date.now },
+  notes: { type: String },
+  status: { type: String, enum: ['draft', 'reviewed', 'settled'], default: 'draft' },
+  submittedBy: { type: String },  // staff user id
   submittedByName: { type: String },
-  reviewedBy:    { type: String },  // owner admin id
-  reviewNotes:   { type: String },
-  cultureId:  { type: mongoose.Schema.Types.ObjectId, ref: 'Culture' }, // optional linkage
+  reviewedBy: { type: String },  // owner admin id
+  reviewNotes: { type: String },
+  cultureId: { type: mongoose.Schema.Types.ObjectId, ref: 'Culture' }, // optional linkage
 }, { timestamps: true });
 
 // Export new models
