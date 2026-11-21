@@ -548,7 +548,7 @@ const ProductSchema = new mongoose.Schema({
   brand: { type: String },                   // brand name
   name: { type: String, required: true },
   code: { type: String, unique: true, required: true }, // SKU
-  category: { type: String, enum: ['Feed', 'Medicine', 'Mineral', 'Equipment', 'Other'], required: true },
+  category: { type: String, enum: ['Feed', 'Medicine', 'Mineral', 'Minerals', 'Chemical', 'Equipment', 'Packaging', 'Other'], required: true },
   productType: { type: String },             // type/subcategory
   hsnCode: { type: String },                 // HSN code for GST compliance
   packSize: { type: Number },                // e.g., 25 for 25kg bag
