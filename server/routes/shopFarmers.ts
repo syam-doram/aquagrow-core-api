@@ -6,6 +6,7 @@
  * GET    /api/shop/farmers/:id         — single farmer
  * POST   /api/shop/farmers             — create farmer
  * PUT    /api/shop/farmers/:id         — update farmer
+ * DELETE /api/shop/farmers/:id         — soft-delete farmer (admin only)
  * GET    /api/shop/farmers/:id/ledger  — transaction ledger with running balance
  * POST   /api/shop/farmers/:id/payments — record credit collection
  */
@@ -110,6 +111,33 @@ router.put('/:id', requireAnyAdmin, async (req: any, res) => {
     res.json(farmer);
   } catch (e: any) {
     console.error('[shopFarmers PUT]', e);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// ── DELETE /:id — soft-delete shop farmer (admin only) ─────────────────────
+router.delete('/:id', requireAnyAdmin, async (req: any, res) => {
+  try {
+    const farmer = await ShopFarmer.findById(req.params.id);
+    if (!farmer) return res.status(404).json({ error: 'Farmer not found' });
+
+    const before = farmer.toObject();
+    farmer.isActive = false;
+    await farmer.save();
+
+    await logAudit({
+      tenantId: req.user.tenantId || 'shop',
+      action: 'FARMER_DELETE',
+      userId: req.user.id,
+      collection: 'shopfarmers',
+      documentId: farmer._id,
+      before,
+      after: farmer.toObject(),
+    });
+
+    res.json({ success: true, message: 'Farmer deactivated' });
+  } catch (e: any) {
+    console.error('[shopFarmers DELETE]', e);
     res.status(500).json({ error: 'Server error' });
   }
 });
