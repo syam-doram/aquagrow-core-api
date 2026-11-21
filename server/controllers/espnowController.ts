@@ -206,7 +206,7 @@ export const deregisterDevice = async (req: Request, res: Response): Promise<voi
     // Route is /devices/:boxId — but the frontend may pass either a MongoDB _id
     // (24-char hex) or a boxId string like "SB001".
     // Try both lookups so either format works.
-    const param = req.params.boxId;  // ← was wrongly named deviceId before
+    const param = String(req.params.boxId || '');
 
     let device = mongoose.Types.ObjectId.isValid(param)
       ? await EspDevice.findOne({ _id: param, userId })
@@ -243,7 +243,7 @@ export const rotateDeviceKey = async (req: Request, res: Response): Promise<void
     if (mongoose.connection.readyState !== 1) { dbOffline(res); return; }
 
     const userId = (req as any).user?.id;
-    const param  = req.params.boxId;   // route is /devices/:boxId/rotate-key
+    const param  = String(req.params.boxId || '');
 
     let device = mongoose.Types.ObjectId.isValid(param)
       ? await EspDevice.findOne({ _id: param, userId })

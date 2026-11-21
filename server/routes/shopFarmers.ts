@@ -202,7 +202,7 @@ router.post('/:id/payments', async (req: any, res) => {
     const farmer = await ShopFarmer.findById(req.params.id);
     if (!farmer) return res.status(404).json({ error: 'Farmer not found' });
 
-    let invoice = null;
+    let invoice: any = null;
     if (referenceInvoiceId) {
       invoice = await Invoice.findById(referenceInvoiceId);
     }

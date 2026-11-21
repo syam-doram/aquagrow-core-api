@@ -169,7 +169,7 @@ router.post('/:id/deliveries', async (req: any, res) => {
     if (!items?.length) return res.status(400).json({ error: 'Delivered items array required' });
 
     for (const delItem of items) {
-      const line = order.items.find(i => String(i.productId) === String(delItem.productId));
+      const line = order.items.find((i: any) => String(i.productId) === String(delItem.productId));
       if (line) {
         line.deliveredQuantity = (line.deliveredQuantity || 0) + Number(delItem.quantity);
         line.remainingQuantity = Math.max(0, line.orderedQuantity - line.deliveredQuantity);
@@ -177,7 +177,7 @@ router.post('/:id/deliveries', async (req: any, res) => {
     }
 
     // Determine overall status
-    const allDelivered = order.items.every(i => (i.remainingQuantity || 0) <= 0);
+    const allDelivered = order.items.every((i: any) => (i.remainingQuantity || 0) <= 0);
     order.status = allDelivered ? 'Delivered' : 'Partially Delivered';
 
     order.deliveries.push({

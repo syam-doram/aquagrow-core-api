@@ -236,7 +236,7 @@ test('13. Partial order delivery correctly computes delivered and remaining quan
 
   assert.equal(orderLine.deliveredQuantity, 8);
   assert.equal(orderLine.remainingQuantity, 12);
-  let status = orderLine.remainingQuantity === 0 ? 'Delivered' : 'Partially Delivered';
+  let status = (orderLine.remainingQuantity as number) === 0 ? 'Delivered' : 'Partially Delivered';
   assert.equal(status, 'Partially Delivered');
 
   // Delivery 2: 12 bags

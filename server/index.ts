@@ -2,13 +2,7 @@ import 'dotenv/config';
 import express, { Request } from 'express';
 import bcrypt from 'bcryptjs';
 
-interface AuthenticatedRequest extends Request {
-  user: {
-    id: string;
-    role: string;
-    [key: string]: any;
-  };
-}
+type AuthenticatedRequest = any;
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { User as UserMongo, AdminUser as AdminUserMongo, Subscription as SubscriptionMongo, RefreshToken, connectDB, Pond as PondMongo, FeedLog as FeedLogMongo, MedicineLog as MedicineLogMongo, WaterLog as WaterLogMongo, SOPLog as SOPLogMongo, Expense as ExpenseMongo, HarvestRequest, ROIEntry as ROIEntryMongo, NotificationLog as NotificationLogMongo, AeratorLog as AeratorLogMongo } from './db.js';
@@ -1539,6 +1533,7 @@ farmer.post('/community/upload-image', authenticate, async (req: AuthenticatedRe
     }
 
     // Use Firebase Admin Storage to upload
+    if (!adminStorage) return res.status(503).json({ error: 'Storage service not configured' });
     const bucket = adminStorage.bucket();
     const ext = mimeType.split('/')[1] || 'jpg';
     const fileName = `community_images/${channel}/${Date.now()}_${req.user.id}.${ext}`;

@@ -79,7 +79,7 @@ router.post('/', async (req: any, res) => {
       if (!it.quantity || it.quantity <= 0)
         return res.status(400).json({ error: `Invalid quantity for product ${prod.name}` });
 
-      const qtyBase = normaliseQuantity(Number(it.quantity), it.unit || prod.baseStockUnit, prod.packSize);
+      const qtyBase = normaliseQuantity(Number(it.quantity), it.unit || prod.baseStockUnit, prod.packSize ?? undefined);
       receiptItems.push({
         productId: it.productId,
         batchId: it.batchId,
